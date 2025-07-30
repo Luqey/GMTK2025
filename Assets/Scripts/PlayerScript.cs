@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Xml.XPath;
 using Unity.VisualScripting;
+using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -41,10 +43,18 @@ public class PlayerScript : MonoBehaviour
 
     Rigidbody2D rigid;
 
+    List<ghostPoint> ghostRecording;
+    public GameObject ghost;
+    bool alreadyRecorded;
+
+    SpriteRenderer sprenderer;
+
     void Awake()
     {
         controls = new InputSystem_Actions();
         rigid = GetComponent<Rigidbody2D>();
+        ghostRecording = new List<ghostPoint>();
+        sprenderer = GetComponent<SpriteRenderer>();
     }
 
     void OnEnable()
@@ -66,6 +76,7 @@ public class PlayerScript : MonoBehaviour
     {
         frameStartPressingJump = -1000;
         frameCounter = 0;
+        alreadyRecorded = false;
     }
 
     // Update is called once per frame
@@ -162,6 +173,19 @@ public class PlayerScript : MonoBehaviour
                 break;
         }
         rigid.linearVelocity = new Vector2(xSpeed, rigid.linearVelocity.y);
+        if (frameCounter % 5 == 0 && !alreadyRecorded)
+        {
+            ghostRecording.Add(new ghostPoint(transform.position, transform.eulerAngles, transform.localScale, sprenderer.sprite, !sprenderer.flipX));
+        }
         frameCounter++;
+    }
+
+    public void recordingTest()
+    {
+        ghost.GetComponent<GhostScript>().points = ghostRecording;
+        alreadyRecorded = true;
+        transform.position = Vector2.zero;
+        rigid.linearVelocity = Vector2.zero;
+        ghost.GetComponent<GhostScript>().counter = 0;
     }
 }
