@@ -90,7 +90,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (frameCounter - frameStartPressingJump < 32 && jump.ReadValue<float>() != 0)
         {
-            rigid.linearVelocityY = 10.5f - (frameCounter - frameStartPressingJump) * 0.07f;
+            rigid.linearVelocityY = jumpPower - (frameCounter - frameStartPressingJump) * 0.07f;
             jumpBuffer = -1;
             onGround = -1;
             jumpCooldown = 5;
@@ -98,7 +98,7 @@ public class PlayerScript : MonoBehaviour
         if (onGround >= 0 && jumpBuffer >= 0 && jumpCooldown < 0)
         {
             frameStartPressingJump = frameCounter;
-            rigid.linearVelocityY = 10.5f;
+            rigid.linearVelocityY = jumpPower;
             jumpBuffer = -1;
             onGround = -1;
             jumpCooldown = 5;
