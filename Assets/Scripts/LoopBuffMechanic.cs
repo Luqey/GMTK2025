@@ -1,12 +1,11 @@
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
 using UnityEngine;
 
 public class LoopBuffMechanic : MonoBehaviour
 {
     [SerializeField] private int numBuffs = 6;
-    private GameObject player; 
+    private GameObject player;
+    private Timer timer;
     private float duration; //Total time (Last time record)
     private float intervals; //Time between buff activation
     private float time = 0f; //Float variable that keeps track of time lapsed
@@ -17,10 +16,12 @@ public class LoopBuffMechanic : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //timer = GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>();
         duration = 14f;
         intervals = duration / numBuffs;
         for (int i = 0; i < numBuffs; i++)
         {
+            Debug.Log(i);
             addBuffToList(i);
         }
     }
