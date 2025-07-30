@@ -82,7 +82,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // Debug.Log(move.ReadValue<Vector2>());
     }
 
     void FixedUpdate()
@@ -118,7 +118,7 @@ public class PlayerScript : MonoBehaviour
             onGround = -1;
             jumpCooldown = 5;
         }
-        switch ((int)move.ReadValue<Vector2>().x)
+        switch ((int)(move.ReadValue<Vector2>().x * 1.5f))
         {
             case 0:
                 if (Mathf.Abs(xSpeed) < accelRate * 0.01f)
