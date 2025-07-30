@@ -75,7 +75,7 @@ public class PlayerScript : MonoBehaviour
         onGround--;
         jumpBuffer--;
         jumpCooldown--;
-        if (Physics2D.BoxCast(new Vector2(transform.position.x, transform.position.y) + new Vector2(0, -0.5f), new Vector2(1, 1), 0, Vector2.down, 0.1f, groundMask) && jumpCooldown < 0)
+        if (Physics2D.BoxCast(new Vector2(transform.position.x, transform.position.y) + new Vector2(0, -0.5f), new Vector2(0.85f, 1), 0, Vector2.down, 0.1f, groundMask) && jumpCooldown < 0)
         {
             onGround = coyoteTimeFrames;
         }
@@ -84,6 +84,10 @@ public class PlayerScript : MonoBehaviour
             jumpBuffer = jumpBufferSize;
         }
         jumpValueLastFrame = (int)jump.ReadValue<float>();
+        if (jump.ReadValue<float>() == 0)
+        {
+            frameStartPressingJump = -1000;
+        }
         if (frameCounter - frameStartPressingJump < 32 && jump.ReadValue<float>() != 0)
         {
             rigid.linearVelocityY = 10.5f - (frameCounter - frameStartPressingJump) * 0.07f;
