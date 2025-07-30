@@ -26,8 +26,8 @@ public class PlayerScript : MonoBehaviour
     public LayerMask groundMask;
 
     //Multipliers from buffs
-    public float speedMult = 1f;
-    public float jumpMult = 1f;
+    private float speedMult = 1f;
+    private float jumpMult = 1f;
 
     float xSpeed;
     // onGround >= 0 = counts as on the ground
@@ -187,5 +187,15 @@ public class PlayerScript : MonoBehaviour
         transform.position = Vector2.zero;
         rigid.linearVelocity = Vector2.zero;
         ghost.GetComponent<GhostScript>().counter = 0;
+    }
+    public void setMultipliers(float spMult, float jMult)
+    {
+        speedMult *= spMult;
+        jumpMult *= jMult;
+    }
+    public void removeMultipliers(float spMult, float jMult)
+    {
+        speedMult /= spMult;
+        jumpMult /= jMult;
     }
 }
