@@ -24,4 +24,9 @@ public class BuffType : MonoBehaviour
         Debug.Log(buffName + " activated!");
         sprite.color = Color.yellow;
     }
+
+    public void Reset()
+    {
+        sprite.color = Color.white;
+    }
 }

@@ -7,13 +7,14 @@ public class Timer : MonoBehaviour
     private float recordTime = 0f; //Fastest time that run
     private float previousTime = 0f; //Previous time score
     private bool isActive = true; //Boolean for whether the timer is active.
+    private LoopBuffMechanic loop;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text recordTimeText;
     [SerializeField] private TMP_Text previousTimeText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        loop = GameObject.FindGameObjectWithTag("Loop").GetComponent<LoopBuffMechanic>();
     }
 
     // Update is called once per frame
@@ -31,6 +32,10 @@ public class Timer : MonoBehaviour
     {
         isActive = !isActive;
     }
+    public bool isTimerActive()
+    {
+        return isActive;
+    }
 
     //Resets timer
     public void resetTimer()
@@ -38,6 +43,7 @@ public class Timer : MonoBehaviour
         recordTimeScore();
         time = 0f;
         timerText.text = updateTime(time);
+        loop.Reset();
     }
 
     //Records the time to the high score if it's faster, and adds it to the previous time
@@ -50,6 +56,7 @@ public class Timer : MonoBehaviour
         }
         previousTime = time;
         previousTimeText.text = updateTime(previousTime);
+        loop.setDuration(previousTime);
     }
 
     //Returns a string for updating the timer text
@@ -62,10 +69,5 @@ public class Timer : MonoBehaviour
         int minutes = ((int)timeVar) / 60 % 360;
         string min = (minutes < 10) ? "0" + minutes : minutes.ToString();
         return min + ":" + sec + ":" + ms;
-    }
-
-    public float getPreviousTime()
-    {
-        return previousTime;
     }
 }
