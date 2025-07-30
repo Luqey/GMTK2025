@@ -1,15 +1,18 @@
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using UnityEngine;
 
 public class LoopBuffMechanic : MonoBehaviour
 {
     [SerializeField] private int numBuffs = 6;
+    private GameObject player; 
     private float duration; //Total time (Last time record)
     private float intervals; //Time between buff activation
     private float time = 0f; //Float variable that keeps track of time lapsed
     private int tempInt = 0; //A variable that I'm using for testing
-    private List<string> buffs = new List<string>(); //Change datatype later
+    [SerializeField] private List<BuffType> buffs = new List<BuffType>(); //List of different types of buffs
+    private List<BuffType> buffsInPlay = new List<BuffType>(); //List of buffs that are in play
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,7 +21,7 @@ public class LoopBuffMechanic : MonoBehaviour
         intervals = duration / numBuffs;
         for (int i = 0; i < numBuffs; i++)
         {
-            buffs.Add("Buff " + i + " activated");
+            addBuffToList(i);
         }
     }
 
@@ -35,6 +38,10 @@ public class LoopBuffMechanic : MonoBehaviour
 
     void activateBuff(int id)
     {
-        Debug.Log(buffs[id]);
+        buffsInPlay[id].applyBuff();
+    }
+    //adds a buff from the list to the ones in play
+    void addBuffToList(int id) {
+        buffsInPlay.Add(buffs[id]);
     }
 }
