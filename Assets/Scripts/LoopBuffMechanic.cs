@@ -40,7 +40,7 @@ public class LoopBuffMechanic : MonoBehaviour
 
     void activateBuff(int id)
     {
-        buffsInPlay[id].applyBuff(player);
+        buffsInPlay[id].applyBuff(player, intervals);
     }
     //adds a buff from the list to the ones in play
     void addBuffToList(int id)
@@ -52,11 +52,12 @@ public class LoopBuffMechanic : MonoBehaviour
     {
         foreach (BuffType b in buffsInPlay)
         {
-            b.Reset();
+            b.deactivate(player);
         }
         time = 0f;
         tempInt = 0;
     }
+    
     public void setDuration(float timeVar)
     {
         duration = timeVar;
