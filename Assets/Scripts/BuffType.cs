@@ -19,7 +19,7 @@ public class BuffType : MonoBehaviour
 
     }
     //apply buff to the player
-    public void applyBuff()
+    public void applyBuff(PlayerScript player)
     {
         Debug.Log(buffName + " activated!");
         sprite.color = Color.yellow;

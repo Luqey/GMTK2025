@@ -4,19 +4,19 @@ using UnityEngine;
 public class LoopBuffMechanic : MonoBehaviour
 {
     [SerializeField] private int numBuffs = 6;
-    private GameObject player;
+    private PlayerScript player;
     private Timer timer;
     private float duration = 0f; //Total time (Last time record)
     private float intervals; //Time between buff activation
     private float time = 0f; //Float variable that keeps track of time lapsed
     private int tempInt = 0; //A variable that I'm using for testing
-    private bool isActive = false;
     [SerializeField] private List<BuffType> buffs = new List<BuffType>(); //List of different types of buffs
     private List<BuffType> buffsInPlay = new List<BuffType>(); //List of buffs that are in play
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         timer = GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>();
         for (int i = 0; i < numBuffs; i++)
         {
@@ -40,7 +40,7 @@ public class LoopBuffMechanic : MonoBehaviour
 
     void activateBuff(int id)
     {
-        buffsInPlay[id].applyBuff();
+        buffsInPlay[id].applyBuff(player);
     }
     //adds a buff from the list to the ones in play
     void addBuffToList(int id)
@@ -62,8 +62,4 @@ public class LoopBuffMechanic : MonoBehaviour
         duration = timeVar;
         intervals = duration / numBuffs;
     }
-    public void setActive(bool toggle)
-    {
-        isActive = toggle;
-    } 
 }
