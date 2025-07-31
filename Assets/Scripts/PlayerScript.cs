@@ -166,7 +166,7 @@ public class PlayerScript : MonoBehaviour
                     {
                         xSpeed = -(maxSpeed * speedMult);
                     }
-                    else if (xSpeed > -(maxSpeed * speedMult))
+                    else if (xSpeed > -(maxSpeed * speedMult) && onGround >= 0)
                     {
                         xSpeed -= accelRate * 0.01f;
                     }
