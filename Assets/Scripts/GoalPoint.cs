@@ -13,10 +13,9 @@ public class GoalPoint : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && (endScreen == null || !endScreen.activeSelf) && (gameOverScreen == null || !gameOverScreen.activeSelf))
         {
             //End Level
-
             collision.gameObject.GetComponent<PlayerScript>().OnDisable();
             if (timer.isTimerActive()) timer.toggleTimer();
             timer.recordTimeScore();
