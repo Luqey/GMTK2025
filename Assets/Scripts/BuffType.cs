@@ -1,6 +1,9 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 public class BuffType : MonoBehaviour
 {
@@ -32,6 +35,76 @@ public class BuffType : MonoBehaviour
         if (intervalOnly) StartCoroutine(intervalBuffTimer(player, interval));
     }
 
+    public void setBuff(int id)
+    {
+        string readFromFilePath = Application.streamingAssetsPath + "\\AugmentData.txt";
+        List<string> fileLines = File.ReadAllLines(readFromFilePath).ToList();
+
+        for (int i = 0; i < fileLines.Count; i++)
+        {
+            if (i == id)
+            {
+                buffName = fileLines[i].Substring(0, fileLines[i].IndexOf('|'));
+                fileLines[i] = fileLines[i].Substring(fileLines[i].IndexOf('|') + 1);
+                while (fileLines[i].Length > 1)
+                {
+                    if (fileLines[i].IndexOf(',') != -1)
+                    {
+                        string argOverride = fileLines[i].Substring(0, fileLines[i].IndexOf(','));
+                        switch (argOverride.Substring(0, 4))
+                        {
+                            case "sMult":
+                                speedMultiplier = float.Parse(argOverride.Substring(7));
+                                break;
+                            case "jMult":
+                                jumpMultiplier = float.Parse(argOverride.Substring(7));
+                                break;
+                            case "aMult":
+                                accelMultiplier = float.Parse(argOverride.Substring(7));
+                                break;
+                            case "gMult":
+                                gravityMultiplier = float.Parse(argOverride.Substring(7));
+                                break;
+                            case "dash":
+                                dash = bool.Parse(argOverride.Substring(7));
+                                break;
+                            case "intO":
+                                intervalOnly = bool.Parse(argOverride.Substring(7));
+                                break;
+                        }
+                        fileLines[i] = fileLines[i].Substring(fileLines[i].IndexOf(',') + 1);
+                    }
+                    else
+                    {
+                        string argOverride = fileLines[i].Substring(0, fileLines[i].IndexOf(';'));
+                        switch (argOverride.Substring(0, 4))
+                        {
+                            case "sMlt":
+                                speedMultiplier = float.Parse(argOverride.Substring(7));
+                                break;
+                            case "jMlt":
+                                jumpMultiplier = float.Parse(argOverride.Substring(7));
+                                break;
+                            case "aMlt":
+                                accelMultiplier = float.Parse(argOverride.Substring(7));
+                                break;
+                            case "gMlt":
+                                gravityMultiplier = float.Parse(argOverride.Substring(7));
+                                break;
+                            case "dash":
+                                dash = bool.Parse(argOverride.Substring(7));
+                                break;
+                            case "intO":
+                                intervalOnly = bool.Parse(argOverride.Substring(7));
+                                break;
+                        }
+                        fileLines[i] = "";
+                    }
+                }
+            }
+        }
+    }
+
     public void deactivate(PlayerScript player)
     {
         if (isActive)
@@ -39,7 +112,7 @@ public class BuffType : MonoBehaviour
             sprite.color = Color.white;
             player.removeMultipliers(speedMultiplier, jumpMultiplier, gravityMultiplier);
             isActive = false;
-        }   
+        }
     }
 
     private IEnumerator intervalBuffTimer(PlayerScript player, float interval)
