@@ -53,16 +53,16 @@ public class BuffType : MonoBehaviour
                         string argOverride = fileLines[i].Substring(0, fileLines[i].IndexOf(','));
                         switch (argOverride.Substring(0, 4))
                         {
-                            case "sMult":
+                            case "sMlt":
                                 speedMultiplier = float.Parse(argOverride.Substring(7));
                                 break;
-                            case "jMult":
+                            case "jMlt":
                                 jumpMultiplier = float.Parse(argOverride.Substring(7));
                                 break;
-                            case "aMult":
+                            case "aMlt":
                                 accelMultiplier = float.Parse(argOverride.Substring(7));
                                 break;
-                            case "gMult":
+                            case "gMlt":
                                 gravityMultiplier = float.Parse(argOverride.Substring(7));
                                 break;
                             case "dash":
