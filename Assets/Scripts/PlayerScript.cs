@@ -141,7 +141,7 @@ public class PlayerScript : MonoBehaviour
             case 1:
                 if (xSpeed > 0)
                 {
-                    if ((maxSpeed * speedMult) - xSpeed < accelRate * 0.01f)
+                    if ((maxSpeed * speedMult) - xSpeed < accelRate * 0.01f && onGround >= 0)
                     {
                         xSpeed = maxSpeed * speedMult;
                     }
@@ -162,11 +162,11 @@ public class PlayerScript : MonoBehaviour
             case -1:
                 if (xSpeed < 0)
                 {
-                    if ((maxSpeed * speedMult) - Mathf.Abs(xSpeed) < accelRate * 0.01f)
+                    if ((maxSpeed * speedMult) - Mathf.Abs(xSpeed) < accelRate * 0.01f && onGround >= 0)
                     {
                         xSpeed = -(maxSpeed * speedMult);
                     }
-                    else if (xSpeed > -(maxSpeed * speedMult) && onGround >= 0)
+                    else if (xSpeed > -(maxSpeed * speedMult))
                     {
                         xSpeed -= accelRate * 0.01f;
                     }
