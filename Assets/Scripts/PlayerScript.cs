@@ -187,7 +187,7 @@ public class PlayerScript : MonoBehaviour
                 }
                 break;
         }
-        rigid.linearVelocity = new Vector2(xSpeed + (isDashing ? dashPower : 0), rigid.linearVelocity.y);
+        rigid.linearVelocity = new Vector2(xSpeed + ((isDashing ? dashPower : 0) * (sprenderer.flipX ? -1 : 1)), rigid.linearVelocity.y);
         if (frameCounter % 5 == 0 && !alreadyRecorded)
         {
             ghostRecording.Add(new ghostPoint(transform.position, transform.eulerAngles, transform.localScale, sprenderer.sprite, !sprenderer.flipX));
