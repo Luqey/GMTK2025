@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
     private bool isActive = true; //Boolean for whether the timer is active.
     private LoopBuffMechanic loop;
     private LifeSystem lives;
+    private PlayerScript player;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text recordTimeText;
     [SerializeField] private TMP_Text previousTimeText;
@@ -17,6 +18,7 @@ public class Timer : MonoBehaviour
     {
         loop = FindFirstObjectByType<LoopBuffMechanic>();
         lives = FindFirstObjectByType<LifeSystem>();
+        player = FindFirstObjectByType<PlayerScript>();
     }
 
     // Update is called once per frame
@@ -42,14 +44,14 @@ public class Timer : MonoBehaviour
     //Resets timer
     public void resetTimer()
     {
-        recordTimeScore();
         time = 0f;
         timerText.text = updateTime(time);
         loop.Reset();
+        player.recordGhost();
     }
 
     //Records the time to the high score if it's faster, and adds it to the previous time
-    void recordTimeScore()
+    public void recordTimeScore()
     {
         if (time < recordTime || recordTime == 0)
         {

@@ -39,6 +39,7 @@ public class PlayerScript : MonoBehaviour
     int frameStartPressingJump;
 
     // will break after 5965 hours of continuous playtime.
+    // that's... a long time.... - Cherry
     int frameCounter;
 
     Rigidbody2D rigid;
@@ -57,7 +58,7 @@ public class PlayerScript : MonoBehaviour
         sprenderer = GetComponent<SpriteRenderer>();
     }
 
-    void OnEnable()
+    public void OnEnable()
     {
         move = controls.Player.Move;
         move.Enable();
@@ -65,7 +66,7 @@ public class PlayerScript : MonoBehaviour
         jump.Enable();
     }
 
-    void OnDisable()
+    public void OnDisable()
     {
         move.Disable();
         jump.Disable();
@@ -187,6 +188,12 @@ public class PlayerScript : MonoBehaviour
         transform.position = Vector2.zero;
         rigid.linearVelocity = Vector2.zero;
         ghost.GetComponent<GhostScript>().counter = 0;
+    }
+    public void recordGhost()
+    {
+        ghost.GetComponent<GhostScript>().points = ghostRecording;
+        ghost.GetComponent<GhostScript>().counter = 0;
+        ghostRecording = new List<ghostPoint>();
     }
     public void setMultipliers(float spMult, float jMult)
     {

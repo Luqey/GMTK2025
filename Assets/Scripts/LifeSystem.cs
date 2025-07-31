@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class LifeSystem : MonoBehaviour
@@ -25,5 +24,9 @@ public class LifeSystem : MonoBehaviour
     {
         lives += amount;
         lifeCount.text = lives.ToString();
+    }
+    public int getLives()
+    {
+        return lives;
     }
 }

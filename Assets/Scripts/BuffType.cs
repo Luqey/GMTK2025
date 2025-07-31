@@ -1,5 +1,7 @@
 using System.Collections;
+using UnityEngine.UI;
 using UnityEngine;
+using UnityEditor.U2D;
 
 public class BuffType : MonoBehaviour
 {
@@ -11,13 +13,13 @@ public class BuffType : MonoBehaviour
     [Tooltip("If true, the buff will only be active for the interval")]
     [SerializeField] private bool intervalOnly = false;
     private bool isActive = false;
-    private SpriteRenderer sprite;
+    private Image sprite;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        sprite = GetComponent<Image>();
     }
     //apply buff to the player
     public void applyBuff(PlayerScript player, float interval)

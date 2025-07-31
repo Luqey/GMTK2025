@@ -9,7 +9,7 @@ public class LoopBuffMechanic : MonoBehaviour
     private float duration = 0f; //Total time (Last time record)
     private float intervals; //Time between buff activation
     private float time = 0f; //Float variable that keeps track of time lapsed
-    private int tempInt = 0; //A variable that I'm using for testing
+    private int buffId = 0;
     [SerializeField] private List<BuffType> buffs = new List<BuffType>(); //List of different types of buffs
     private List<BuffType> buffsInPlay = new List<BuffType>(); //List of buffs that are in play
 
@@ -30,10 +30,10 @@ public class LoopBuffMechanic : MonoBehaviour
         if (timer.isTimerActive() && duration != 0f)
         {
             time += Time.deltaTime;
-            if (time >= (intervals * (tempInt + 1)) && tempInt != numBuffs)
+            if (time >= (intervals * (buffId + 1)) && buffId != numBuffs)
             {
-                activateBuff(tempInt);
-                tempInt++;
+                activateBuff(buffId);
+                buffId++;
             }
         }
     }
@@ -55,7 +55,7 @@ public class LoopBuffMechanic : MonoBehaviour
             b.deactivate(player);
         }
         time = 0f;
-        tempInt = 0;
+        buffId = 0;
     }
     
     public void setDuration(float timeVar)
