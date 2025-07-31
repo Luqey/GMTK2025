@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -93,7 +94,7 @@ public class PlayerScript : MonoBehaviour
         onGround--;
         jumpBuffer--;
         jumpCooldown--;
-        if (Physics2D.BoxCast(new Vector2(transform.position.x, transform.position.y) + new Vector2(0, -0.5f), new Vector2(0.85f, 1), 0, Vector2.down, 0.1f, groundMask) && jumpCooldown < 0)
+        if (Physics2D.BoxCast(new Vector2(transform.position.x, transform.position.y) + new Vector2(0, -0.5f) + GetComponent<CapsuleCollider2D>().offset, new Vector2(0.85f, 1), 0, Vector2.down, 0.1f, groundMask) && jumpCooldown < 0)
         {
             onGround = coyoteTimeFrames;
         }
@@ -189,22 +190,16 @@ public class PlayerScript : MonoBehaviour
             ghostRecording.Add(new ghostPoint(transform.position, transform.eulerAngles, transform.localScale, sprenderer.sprite, !sprenderer.flipX));
         }
         frameCounter++;
-
+        Debug.Log(onGround);
         // Animation Stuff Below
         //myAnim.SetFloat("moveSpeed", xSpeed); 
 
-        if (xSpeed > 0.1f)
+        if (Math.Abs(xSpeed) > 0.1f)
         {
             myAnim.SetBool("isRunning", true);
-            sprenderer.flipX = false;
+            sprenderer.flipX = xSpeed < 0;
         }
-        else if (xSpeed < -0.1f)
-        {
-            myAnim.SetBool("isRunning", true);
-            sprenderer.flipX = true;
-        }
-
-        else if (xSpeed < 0.1f || xSpeed > -0.1f)
+        else
         {
             myAnim.SetBool("isRunning", false);
         }
