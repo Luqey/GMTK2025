@@ -7,15 +7,13 @@ using System.Linq;
 
 public class BuffType : MonoBehaviour
 {
-    [SerializeField] private string buffName;
-    [SerializeField] [Range(0.01f,10f)] private float speedMultiplier = 1f;
-    [SerializeField] [Range(0.01f,10f)] private float jumpMultiplier = 1f;
-    [Tooltip("Set it lower to make things slippier (like you're on ice")]
-    [SerializeField] [Range(0.01f,10f)] private float accelMultiplier = 1f;
-    [SerializeField] [Range(0.01f,10f)] private float gravityMultiplier = 1f;
-    [SerializeField] private bool dash = false;
-    [Tooltip("If true, the buff will only be active for the interval")]
-    [SerializeField] private bool intervalOnly = false;
+    private string buffName = "";
+    private float speedMultiplier = 1f;
+    private float jumpMultiplier = 1f;
+    private float accelMultiplier = 1f;
+    private float gravityMultiplier = 1f;
+    private bool dash = false;
+    private bool intervalOnly = false;
     private bool isActive = false;
     private Image sprite;
 
@@ -31,8 +29,9 @@ public class BuffType : MonoBehaviour
         isActive = true;
         Debug.Log(buffName + " activated!");
         sprite.color = Color.yellow;
-        player.setMultipliers(speedMultiplier, jumpMultiplier,gravityMultiplier);
+        player.setMultipliers(speedMultiplier, jumpMultiplier, gravityMultiplier);
         if (intervalOnly) StartCoroutine(intervalBuffTimer(player, interval));
+        player.setDash(dash);
     }
 
     public void setBuff(int id)
@@ -105,6 +104,19 @@ public class BuffType : MonoBehaviour
         }
     }
 
+    //Sets all variables to default values; use when removing an augment from a slot.
+    public void factoryReset()
+    {
+        buffName = "";
+        speedMultiplier = 1f;
+        jumpMultiplier = 1f;
+        accelMultiplier = 1f;
+        gravityMultiplier = 1f;
+        dash = false;
+        intervalOnly = false;
+        isActive = false;
+    }
+
     public void deactivate(PlayerScript player)
     {
         if (isActive)
@@ -119,5 +131,11 @@ public class BuffType : MonoBehaviour
     {
         yield return new WaitForSeconds(interval);
         deactivate(player);
+    }
+    private IEnumerator applyDash(PlayerScript player)
+    {
+        player.setDash(true);
+        yield return new WaitForSeconds(0.5f);
+        player.setDash(false);
     }
 }

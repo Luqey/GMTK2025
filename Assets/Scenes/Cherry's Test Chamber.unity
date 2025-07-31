@@ -456,13 +456,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05aea0feef583e4cb68031254b403cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffName: 4
+  buffName: Slippery
   speedMultiplier: 1
   jumpMultiplier: 1
-  accelMultiplier: 1
+  accelMultiplier: 0.3
   gravityMultiplier: 1
   dash: 0
-  intervalOnly: 0
+  intervalOnly: 1
 --- !u!114 &52763819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1535,12 +1535,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05aea0feef583e4cb68031254b403cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffName: 5
+  buffName: Dash
   speedMultiplier: 1
   jumpMultiplier: 1
   accelMultiplier: 1
   gravityMultiplier: 1
-  dash: 0
+  dash: 1
   intervalOnly: 0
 --- !u!114 &997069799
 MonoBehaviour:
@@ -1630,13 +1630,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05aea0feef583e4cb68031254b403cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffName: 3
+  buffName: Gravity
   speedMultiplier: 1
   jumpMultiplier: 1
   accelMultiplier: 1
-  gravityMultiplier: 1
+  gravityMultiplier: 0.7
   dash: 0
-  intervalOnly: 0
+  intervalOnly: 1
 --- !u!114 &1007644752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3187,7 +3187,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &2040158813
 MonoBehaviour:
   m_ObjectHideFlags: 0

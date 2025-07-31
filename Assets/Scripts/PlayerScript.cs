@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,6 +35,8 @@ public class PlayerScript : MonoBehaviour
     // don't really need this, i just put this to be safe because sometimes cases can come up where unity can read multiple jump inputs when we only want one
     int jumpCooldown;
     int frameStartPressingJump;
+    [SerializeField] float dashPower = 20f;
+    private bool isDashing = false;
 
     // will break after 5965 hours of continuous playtime.
     // that's... a long time.... - Cherry
@@ -94,7 +97,7 @@ public class PlayerScript : MonoBehaviour
         onGround--;
         jumpBuffer--;
         jumpCooldown--;
-        if (Physics2D.BoxCast(new Vector2(transform.position.x, transform.position.y) + new Vector2(0, -0.5f) + GetComponent<CapsuleCollider2D>().offset, new Vector2(0.85f, 1), 0, Vector2.down, 0.1f, groundMask) && jumpCooldown < 0)
+        if (Physics2D.BoxCast(new Vector2(transform.position.x, transform.position.y) + new Vector2(0, -0.5f) + GetComponent<Collider2D>().offset, new Vector2(0.85f, 1), 0, Vector2.down, 0.1f, groundMask) && jumpCooldown < 0)
         {
             onGround = coyoteTimeFrames;
         }
@@ -184,13 +187,12 @@ public class PlayerScript : MonoBehaviour
                 }
                 break;
         }
-        rigid.linearVelocity = new Vector2(xSpeed, rigid.linearVelocity.y);
+        rigid.linearVelocity = new Vector2(xSpeed + (isDashing ? dashPower : 0), rigid.linearVelocity.y);
         if (frameCounter % 5 == 0 && !alreadyRecorded)
         {
             ghostRecording.Add(new ghostPoint(transform.position, transform.eulerAngles, transform.localScale, sprenderer.sprite, !sprenderer.flipX));
         }
         frameCounter++;
-        Debug.Log(onGround);
         // Animation Stuff Below
         //myAnim.SetFloat("moveSpeed", xSpeed); 
 
@@ -230,5 +232,9 @@ public class PlayerScript : MonoBehaviour
         speedMult /= spMult;
         jumpMult /= jMult;
         rigid.gravityScale /= gMult;
+    }
+    public void setDash(bool dash)
+    {
+        isDashing = dash;
     }
 }

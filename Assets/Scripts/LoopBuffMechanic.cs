@@ -11,16 +11,14 @@ public class LoopBuffMechanic : MonoBehaviour
     private float time = 0f; //Float variable that keeps track of time lapsed
     private int buffId = 0;
     [SerializeField] private List<BuffType> buffs = new List<BuffType>(); //List of different types of buffs
-    private BuffType[] buffsInPlay; //List of buffs that are in play
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        buffsInPlay = new BuffType[numBuffs];
         player = FindFirstObjectByType<PlayerScript>();
         timer = FindFirstObjectByType<Timer>();
         //This is for testing purposes, remove later
-        for (int i = 0; i < numBuffs; i++)
+        for (int i = 0; i < 5; i++)
         {
             addBuffToList(i, i);
         }
@@ -42,24 +40,24 @@ public class LoopBuffMechanic : MonoBehaviour
 
     void activateBuff(int id)
     {
-        if (buffsInPlay[id] != null) buffsInPlay[id].applyBuff(player, intervals);
+        if (buffs[id] != null) buffs[id].applyBuff(player, intervals);
     }
     //adds an augment from the list to the ones in play
     public void addBuffToList(int id, int position)
     {
-        if (position < numBuffs) buffsInPlay[position] = buffs[id];
+        if (position < numBuffs) buffs[position].setBuff(id);
         else Debug.Log("Position out of Range! Cannot add augment to list!");
     }
     //removes an augment from the loop
     public void removeBuffFromList(int position)
     {
-        if (position < numBuffs) buffsInPlay[position] = null;
+        if (position < numBuffs) buffs[position].factoryReset();
         else Debug.Log("Position out of Range! Cannot remove augment that doesn't exist!");
     }
 
     public void Reset()
     {
-        foreach (BuffType b in buffsInPlay)
+        foreach (BuffType b in buffs)
         {
             b.deactivate(player);
         }
