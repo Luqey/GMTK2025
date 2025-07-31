@@ -149,6 +149,10 @@ public class PlayerScript : MonoBehaviour
                     {
                         xSpeed += accelRate * 0.01f;
                     }
+                    if (rigid.linearVelocityX == 0)
+                    {
+                        xSpeed = 0;
+                    }
                 }
                 else
                 {
@@ -165,6 +169,10 @@ public class PlayerScript : MonoBehaviour
                     else if (xSpeed > -(maxSpeed * speedMult))
                     {
                         xSpeed -= accelRate * 0.01f;
+                    }
+                    if (rigid.linearVelocityX == 0)
+                    {
+                        xSpeed = 0;
                     }
                 }
                 else
