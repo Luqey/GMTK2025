@@ -46,12 +46,18 @@ public class PlayerScript : MonoBehaviour
 
     SpriteRenderer sprenderer;
 
+    #region Luke's Animation Corner
+    [SerializeField] Animator myAnim;
+    #endregion
+
     void Awake()
     {
         controls = new InputSystem_Actions();
         rigid = GetComponent<Rigidbody2D>();
         ghostRecording = new List<ghostPoint>();
         sprenderer = GetComponent<SpriteRenderer>();
+
+        myAnim = GetComponent<Animator>();
     }
 
     public void OnEnable()
@@ -183,6 +189,25 @@ public class PlayerScript : MonoBehaviour
             ghostRecording.Add(new ghostPoint(transform.position, transform.eulerAngles, transform.localScale, sprenderer.sprite, !sprenderer.flipX));
         }
         frameCounter++;
+
+        // Animation Stuff Below
+        //myAnim.SetFloat("moveSpeed", xSpeed); 
+
+        if (xSpeed > 0.1f)
+        {
+            myAnim.SetBool("isRunning", true);
+            sprenderer.flipX = false;
+        }
+        else if (xSpeed < -0.1f)
+        {
+            myAnim.SetBool("isRunning", true);
+            sprenderer.flipX = true;
+        }
+
+        else if (xSpeed < 0.1f || xSpeed > -0.1f)
+        {
+            myAnim.SetBool("isRunning", false);
+        }
     }
 
     public void recordingTest()
