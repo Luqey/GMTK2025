@@ -19,12 +19,6 @@ public class BuffType : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     //apply buff to the player
     public void applyBuff(PlayerScript player, float interval)
     {

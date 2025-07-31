@@ -8,13 +8,15 @@ public class Timer : MonoBehaviour
     private float previousTime = 0f; //Previous time score
     private bool isActive = true; //Boolean for whether the timer is active.
     private LoopBuffMechanic loop;
+    private LifeSystem lives;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text recordTimeText;
     [SerializeField] private TMP_Text previousTimeText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        loop = GameObject.FindGameObjectWithTag("Loop").GetComponent<LoopBuffMechanic>();
+        loop = FindFirstObjectByType<LoopBuffMechanic>();
+        lives = FindFirstObjectByType<LifeSystem>();
     }
 
     // Update is called once per frame
@@ -53,6 +55,10 @@ public class Timer : MonoBehaviour
         {
             recordTime = time;
             recordTimeText.text = updateTime(recordTime);
+        }
+        else
+        {
+            lives.changeLives(-1);
         }
         previousTime = time;
         previousTimeText.text = updateTime(previousTime);

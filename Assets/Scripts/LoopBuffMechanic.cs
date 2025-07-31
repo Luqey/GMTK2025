@@ -16,8 +16,8 @@ public class LoopBuffMechanic : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-        timer = GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>();
+        player = FindFirstObjectByType<PlayerScript>();
+        timer = FindFirstObjectByType<Timer>();
         for (int i = 0; i < numBuffs; i++)
         {
             addBuffToList(i);
