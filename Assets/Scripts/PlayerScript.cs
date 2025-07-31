@@ -1,8 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Xml.XPath;
-using Unity.VisualScripting;
-using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

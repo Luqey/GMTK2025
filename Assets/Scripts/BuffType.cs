@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
-using UnityEditor.U2D;
 
 public class BuffType : MonoBehaviour
 {

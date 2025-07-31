@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
 
 public class LoopBuffMechanic : MonoBehaviour
@@ -20,6 +19,7 @@ public class LoopBuffMechanic : MonoBehaviour
         buffsInPlay = new BuffType[numBuffs];
         player = FindFirstObjectByType<PlayerScript>();
         timer = FindFirstObjectByType<Timer>();
+        //This is for testing purposes, remove later
         for (int i = 0; i < numBuffs; i++)
         {
             addBuffToList(i, i);
@@ -44,13 +44,14 @@ public class LoopBuffMechanic : MonoBehaviour
     {
         if (buffsInPlay[id] != null) buffsInPlay[id].applyBuff(player, intervals);
     }
-    //adds a buff from the list to the ones in play
+    //adds an augment from the list to the ones in play
     public void addBuffToList(int id, int position)
     {
         if (position < numBuffs) buffsInPlay[position] = buffs[id];
         else Debug.Log("Position out of Range! Cannot add augment to list!");
     }
-    public void removeBuffFromList(int id, int position)
+    //removes an augment from the loop
+    public void removeBuffFromList(int position)
     {
         if (position < numBuffs) buffsInPlay[position] = null;
         else Debug.Log("Position out of Range! Cannot remove augment that doesn't exist!");
