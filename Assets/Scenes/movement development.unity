@@ -2929,9 +2929,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  speedMult: 1
-  jumpMult: 1
-  ghost: {fileID: 0}
+  ghost: {fileID: 813602972}
 --- !u!114 &1324023045
 MonoBehaviour:
   m_ObjectHideFlags: 0
