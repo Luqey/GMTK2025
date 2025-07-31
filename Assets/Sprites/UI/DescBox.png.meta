@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: c44d4aa97d53bf54a9efc1f9c2f0e43a
+guid: 3d1c4c41a716e3a40bdbd56e4ff3557f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8472314236141864964
-    second: LoopSections_0
-  - first:
-      213: 6044515272933300510
-    second: LoopSections_1
+      213: -7225897608374683936
+    second: DescBox_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LoopSections_0
+      name: DescBox_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 10
-        height: 10
+        x: 1
+        y: 1
+        width: 53
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 40888b6d8e4b39570800000000000000
-      internalID: 8472314236141864964
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LoopSections_1
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 0
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e19dc929d9e62e350800000000000000
-      internalID: 6044515272933300510
+      spriteID: 0e67b7dd86478bb90800000000000000
+      internalID: -7225897608374683936
       vertices: []
       indices: 
       edges: []
@@ -150,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 60aec65463cc9ec43b57fbe553cbdca0
+    spriteID: 939a11c4cbac93d4d9566dffea9f2713
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LoopSections_0: 8472314236141864964
-      LoopSections_1: 6044515272933300510
+      DescBox_0: -7225897608374683936
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
