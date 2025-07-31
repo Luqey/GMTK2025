@@ -224,14 +224,16 @@ public class PlayerScript : MonoBehaviour
         ghost.GetComponent<GhostScript>().counter = 0;
         ghostRecording = new List<ghostPoint>();
     }
-    public void setMultipliers(float spMult, float jMult)
+    public void setMultipliers(float spMult, float jMult, float gMult)
     {
         speedMult *= spMult;
         jumpMult *= jMult;
+        rigid.gravityScale *= gMult;
     }
-    public void removeMultipliers(float spMult, float jMult)
+    public void removeMultipliers(float spMult, float jMult, float gMult)
     {
         speedMult /= spMult;
         jumpMult /= jMult;
+        rigid.gravityScale /= gMult;
     }
 }

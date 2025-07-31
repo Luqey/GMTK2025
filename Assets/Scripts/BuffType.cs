@@ -5,10 +5,12 @@ using UnityEngine;
 public class BuffType : MonoBehaviour
 {
     [SerializeField] private string buffName;
-    [Tooltip("Be careful not to set this to 0; it will make the player unable to move")]
-    [SerializeField] private float speedMultiplier = 1f;
-    [Tooltip("Be careful not to set this to 0; it will make the player unable to jump")]
-    [SerializeField] private float jumpMultiplier = 1f;
+    [SerializeField] [Range(0.01f,10f)] private float speedMultiplier = 1f;
+    [SerializeField] [Range(0.01f,10f)] private float jumpMultiplier = 1f;
+    [Tooltip("Set it lower to make things slippier (like you're on ice")]
+    [SerializeField] [Range(0.01f,10f)] private float accelMultiplier = 1f;
+    [SerializeField] [Range(0.01f,10f)] private float gravityMultiplier = 1f;
+    [SerializeField] private bool dash = false;
     [Tooltip("If true, the buff will only be active for the interval")]
     [SerializeField] private bool intervalOnly = false;
     private bool isActive = false;
@@ -26,7 +28,7 @@ public class BuffType : MonoBehaviour
         isActive = true;
         Debug.Log(buffName + " activated!");
         sprite.color = Color.yellow;
-        player.setMultipliers(speedMultiplier, jumpMultiplier);
+        player.setMultipliers(speedMultiplier, jumpMultiplier,gravityMultiplier);
         if (intervalOnly) StartCoroutine(intervalBuffTimer(player, interval));
     }
 
@@ -35,7 +37,7 @@ public class BuffType : MonoBehaviour
         if (isActive)
         {
             sprite.color = Color.white;
-            player.removeMultipliers(speedMultiplier, jumpMultiplier);
+            player.removeMultipliers(speedMultiplier, jumpMultiplier, gravityMultiplier);
             isActive = false;
         }   
     }
