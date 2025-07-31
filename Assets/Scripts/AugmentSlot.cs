@@ -12,6 +12,9 @@ public class AugmentSlot : MonoBehaviour
     public Sprite[] rarityLabels2;
     public GameObject DescriptionBox;
     public GameObject popup;
+    public int negativeId;
+    public string negativeDescription;
+    public AugmentSelectionManager asm;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,5 +36,6 @@ public class AugmentSlot : MonoBehaviour
         rarityDisplay2.GetComponent<SpriteRenderer>().sprite = rarityLabels2[rarity];
         DescriptionBox.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = description;
         popup.SetActive(true);
+        asm.regenerateNegativeOptions(this);
     }
 }

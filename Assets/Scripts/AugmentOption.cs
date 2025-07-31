@@ -14,13 +14,29 @@ public class AugmentOption : MonoBehaviour
     Animator anim;
     public GameObject DescriptionBox;
     public int framesToShowDescription;
+    public AugmentSlot slotForNegative;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rarityDisplay.GetComponent<SpriteRenderer>().sprite = rarityLabels[rarity];
         anim = GetComponent<Animator>();
-        DescriptionBox.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = description;
+
+        regenerateParts();
         // clicked();
+    }
+
+    public void regenerateParts()
+    {
+        rarityDisplay.SetActive(true);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        rarityDisplay.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        DescriptionBox.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        DescriptionBox.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = new Color(1, 1, 1, 1);
+        if (rarity >= 0)
+            rarityDisplay.GetComponent<SpriteRenderer>().sprite = rarityLabels[rarity];
+        else
+            rarityDisplay.SetActive(false);
+        DescriptionBox.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = description;
+        transform.localScale = new Vector3(16, 16, 16);
     }
 
     // Update is called once per frame
@@ -46,11 +62,20 @@ public class AugmentOption : MonoBehaviour
     }
     public void endAnim()
     {
-        GameObject g = Instantiate(draggablePrefab, transform.position + new Vector3(0, 3, 0), Quaternion.identity);
-        g.GetComponent<DragAndDropAugment>().id = id;
-        g.GetComponent<DragAndDropAugment>().rarity = rarity;
-        g.GetComponent<DragAndDropAugment>().description = description;
-        gameObject.SetActive(false);
+        if (rarity == -1)
+        {
+            slotForNegative.negativeId = id;
+            slotForNegative.negativeDescription = description;
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            GameObject g = Instantiate(draggablePrefab, transform.position + new Vector3(0, 3, 0), Quaternion.identity);
+            g.GetComponent<DragAndDropAugment>().id = id;
+            g.GetComponent<DragAndDropAugment>().rarity = rarity;
+            g.GetComponent<DragAndDropAugment>().description = description;
+            gameObject.SetActive(false);
+        }
     }
     public void fadeOut()
     {
