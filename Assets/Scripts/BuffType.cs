@@ -13,6 +13,7 @@ public class BuffType : MonoBehaviour
     private float accelMultiplier = 1f;
     private float gravityMultiplier = 1f;
     private bool dash = false;
+    private bool extraJump = false;
     private bool intervalOnly = false;
     private bool isActive = false;
     private Image sprite;
@@ -29,9 +30,10 @@ public class BuffType : MonoBehaviour
         isActive = true;
         Debug.Log(buffName + " activated!");
         sprite.color = Color.yellow;
-        player.setMultipliers(speedMultiplier, jumpMultiplier, gravityMultiplier);
+        player.setMultipliers(speedMultiplier, jumpMultiplier, accelMultiplier, gravityMultiplier);
         if (intervalOnly) StartCoroutine(intervalBuffTimer(player, interval));
-        player.setDash(dash);
+        if (dash) StartCoroutine(applyDash(player));
+        if (extraJump) player.addJump(1);
     }
 
     public void setBuff(int id)
@@ -70,6 +72,9 @@ public class BuffType : MonoBehaviour
                             case "intO":
                                 intervalOnly = bool.Parse(argOverride.Substring(7));
                                 break;
+                            case "jump":
+                                extraJump = bool.Parse(argOverride.Substring(7));
+                                break;
                         }
                         fileLines[i] = fileLines[i].Substring(fileLines[i].IndexOf(',') + 1);
                     }
@@ -95,6 +100,9 @@ public class BuffType : MonoBehaviour
                                 break;
                             case "intO":
                                 intervalOnly = bool.Parse(argOverride.Substring(7));
+                                break;
+                            case "jump":
+                                extraJump = bool.Parse(argOverride.Substring(7));
                                 break;
                         }
                         fileLines[i] = "";
@@ -122,7 +130,8 @@ public class BuffType : MonoBehaviour
         if (isActive)
         {
             sprite.color = Color.white;
-            player.removeMultipliers(speedMultiplier, jumpMultiplier, gravityMultiplier);
+            player.removeMultipliers(speedMultiplier, jumpMultiplier, accelMultiplier, gravityMultiplier);
+            if (extraJump) player.addJump(-1);
             isActive = false;
         }
     }
@@ -135,7 +144,7 @@ public class BuffType : MonoBehaviour
     private IEnumerator applyDash(PlayerScript player)
     {
         player.setDash(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         player.setDash(false);
     }
 }

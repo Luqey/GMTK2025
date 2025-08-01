@@ -3,3 +3,4 @@ Speed II|sMlt = 1.8;
 Spring Shoes|jMlt = 1.5;
 Athletic|sMlt = 1.5, jMlt = 1.3;
 Dash|dash = true;
+Extra Jump|jump = true;

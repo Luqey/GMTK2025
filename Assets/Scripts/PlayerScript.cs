@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,8 +34,10 @@ public class PlayerScript : MonoBehaviour
     // don't really need this, i just put this to be safe because sometimes cases can come up where unity can read multiple jump inputs when we only want one
     int jumpCooldown;
     int frameStartPressingJump;
-    [SerializeField] float dashPower = 20f;
+    [SerializeField] private float dashPower = 20f;
     private bool isDashing = false;
+    private int jumpCount = 1;
+    private int jumpsMade = 0;
 
     // will break after 5965 hours of continuous playtime.
     // that's... a long time.... - Cherry
@@ -100,6 +101,7 @@ public class PlayerScript : MonoBehaviour
         if (Physics2D.BoxCast(new Vector2(transform.position.x, transform.position.y) + new Vector2(0, -0.5f) + GetComponent<Collider2D>().offset, new Vector2(0.85f, 1), 0, Vector2.down, 0.1f, groundMask) && jumpCooldown < 0)
         {
             onGround = coyoteTimeFrames;
+            jumpsMade = 0;
         }
         if (jump.ReadValue<float>() != 0 && jumpValueLastFrame == 0)
         {
@@ -117,13 +119,14 @@ public class PlayerScript : MonoBehaviour
             onGround = -1;
             jumpCooldown = 5;
         }
-        if (onGround >= 0 && jumpBuffer >= 0 && jumpCooldown < 0)
+        if ((onGround >= 0 || jumpsMade < jumpCount) && jumpBuffer >= 0 && jumpCooldown < 0)
         {
             frameStartPressingJump = frameCounter;
             rigid.linearVelocityY = jumpPower * jumpMult;
             jumpBuffer = -1;
             onGround = -1;
             jumpCooldown = 5;
+            jumpsMade++;
         }
         switch ((int)(move.ReadValue<Vector2>().x * 1.5f))
         {
@@ -221,20 +224,26 @@ public class PlayerScript : MonoBehaviour
         ghost.GetComponent<GhostScript>().counter = 0;
         ghostRecording = new List<ghostPoint>();
     }
-    public void setMultipliers(float spMult, float jMult, float gMult)
+    public void setMultipliers(float spMult, float jMult, float aMult, float gMult)
     {
         speedMult *= spMult;
         jumpMult *= jMult;
+        accelRate *= aMult;
         rigid.gravityScale *= gMult;
     }
-    public void removeMultipliers(float spMult, float jMult, float gMult)
+    public void removeMultipliers(float spMult, float jMult, float aMult, float gMult)
     {
         speedMult /= spMult;
         jumpMult /= jMult;
+        accelRate /= aMult;
         rigid.gravityScale /= gMult;
     }
     public void setDash(bool dash)
     {
         isDashing = dash;
+    }
+    public void addJump(int num)
+    {
+        jumpCount += num;
     }
 }

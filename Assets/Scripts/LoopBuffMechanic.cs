@@ -18,10 +18,12 @@ public class LoopBuffMechanic : MonoBehaviour
         player = FindFirstObjectByType<PlayerScript>();
         timer = FindFirstObjectByType<Timer>();
         //This is for testing purposes, remove later
-        for (int i = 0; i < 5; i++)
+        /*for (int i = 0; i < numBuffs; i++)
         {
             addBuffToList(i, i);
         }
+        */
+        addBuffToList(4, 0);
     }
 
     // Update is called once per frame
