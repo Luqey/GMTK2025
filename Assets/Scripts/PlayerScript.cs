@@ -125,7 +125,7 @@ public class PlayerScript : MonoBehaviour
             myAnim.Play("JumpUp");
             myAnim.SetBool("isFalling", false);
             frameStartPressingJump = frameCounter;
-            rigid.linearVelocityY = jumpPower * jumpMult;
+            rigid.linearVelocityY += jumpPower * jumpMult;
             jumpBuffer = -1;
             onGround = -1;
             jumpCooldown = 5;
@@ -199,6 +199,7 @@ public class PlayerScript : MonoBehaviour
             ghostRecording.Add(new ghostPoint(transform.position, transform.eulerAngles, transform.localScale, sprenderer.sprite, !sprenderer.flipX));
         }
         frameCounter++;
+        if (Math.Abs(rigid.linearVelocityY) < 0.01f) rigid.linearVelocityY = 0;
         if (rigid.linearVelocityY < 0)
         {
             myAnim.SetBool("isFalling", true);
@@ -255,6 +256,16 @@ public class PlayerScript : MonoBehaviour
     public void addJump(int num)
     {
         jumpCount += num;
+    }
+    public void springJump(float springPower)
+    {
+        jumpsMade = 1;
+        onGround = -1;
+        jumpBuffer = -1;
+        jumpCooldown = 5;
+        rigid.linearVelocity += new Vector2(0, springPower);
+        Debug.Log("Spring");
+        myAnim.Play("JumpUp");
     }
 
     public void invertControls(bool toggle)
