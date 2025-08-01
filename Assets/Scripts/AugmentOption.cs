@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class AugmentOption : MonoBehaviour
 {
@@ -64,9 +65,10 @@ public class AugmentOption : MonoBehaviour
     {
         if (rarity == -1)
         {
-            slotForNegative.negativeId = id;
-            slotForNegative.negativeDescription = description;
+            slotForNegative.updateNegative(id, description);
             gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("adt").GetComponent<AugmentDataTransfer>().overrideSceneBuffs = true;
+            SceneManager.LoadScene(0);
         }
         else
         {

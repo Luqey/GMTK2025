@@ -4,15 +4,15 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     private float time = 0f; //Time elapsed
-    private float recordTime = 0f; //Fastest time that run
-    private float previousTime = 0f; //Previous time score
+    public float recordTime = 0f; //Fastest time that run
+    public float previousTime = 0f; //Previous time score
     private bool isActive = true; //Boolean for whether the timer is active.
     private LoopBuffMechanic loop;
-    private LifeSystem lives;
+    public LifeSystem lives;
     private PlayerScript player;
     [SerializeField] private TMP_Text timerText;
-    [SerializeField] private TMP_Text recordTimeText;
-    [SerializeField] private TMP_Text previousTimeText;
+    [SerializeField] public TMP_Text recordTimeText;
+    [SerializeField] public TMP_Text previousTimeText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -68,7 +68,7 @@ public class Timer : MonoBehaviour
     }
 
     //Returns a string for updating the timer text
-    string updateTime(float timeVar)
+    public string updateTime(float timeVar)
     {
         int miliseconds = ((int)(timeVar * 100)) % 100;
         string ms = (miliseconds < 10) ? "0" + miliseconds : miliseconds.ToString();

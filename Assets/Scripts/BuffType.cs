@@ -19,6 +19,8 @@ public class BuffType : MonoBehaviour
     private bool intervalOnly = false;
     private bool isActive = false;
     private Image sprite;
+    public int idNumber;
+    public int rarity;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,7 +33,8 @@ public class BuffType : MonoBehaviour
     {
         isActive = true;
         Debug.Log(buffName + " activated!");
-        sprite.color = Color.yellow;
+        if(rarity != -1)
+            sprite.color = Color.yellow;
         player.setMultipliers(speedMultiplier, jumpMultiplier, accelMultiplier, gravityMultiplier);
         if (intervalOnly) StartCoroutine(intervalBuffTimer(player, interval));
         if (dash) StartCoroutine(applyDash(player));
@@ -40,10 +43,13 @@ public class BuffType : MonoBehaviour
         if (teleport) player.transform.position = DataManager.instance.initialPlayerPosition;
     }
 
-    public void setBuff(int id)
+    public void setBuff(int id, int r)
     {
         string readFromFilePath = Application.streamingAssetsPath + "\\AugmentData.txt";
         List<string> fileLines = File.ReadAllLines(readFromFilePath).ToList();
+
+        idNumber = id;
+        rarity = r;
 
         for (int i = 0; i < fileLines.Count; i++)
         {
@@ -148,7 +154,8 @@ public class BuffType : MonoBehaviour
     {
         if (isActive)
         {
-            sprite.color = Color.white;
+            if(rarity != -1)
+                sprite.color = Color.white;
             player.removeMultipliers(speedMultiplier, jumpMultiplier, accelMultiplier, gravityMultiplier);
             if (extraJump) player.addJump(-1);
             if (invert) player.invertControls(false);

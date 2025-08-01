@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ground
   - augment slot
+  - Timer
+  - adt
   layers:
   - Default
   - TransparentFX

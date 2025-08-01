@@ -46,7 +46,7 @@ public class PlayerScript : MonoBehaviour
 
     Rigidbody2D rigid;
 
-    List<ghostPoint> ghostRecording;
+    public List<ghostPoint> ghostRecording;
     public GameObject ghost;
     bool alreadyRecorded;
 

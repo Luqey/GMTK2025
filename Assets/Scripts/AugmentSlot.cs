@@ -15,6 +15,7 @@ public class AugmentSlot : MonoBehaviour
     public int negativeId;
     public string negativeDescription;
     public AugmentSelectionManager asm;
+    public int index;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,6 +29,18 @@ public class AugmentSlot : MonoBehaviour
     }
     public void Populate(int r, int i, string d)
     {
+        if (i == -1)
+        {
+            id = -1;
+            return;
+        }
+        Debug.Log(id);
+        if (id == -1)
+        {
+            AugmentDataTransfer adt = GameObject.FindGameObjectWithTag("adt").GetComponent<AugmentDataTransfer>();
+            adt.ids[index] = i;
+            adt.rarityDisps[index] = r;
+        }
         rarity = r;
         id = i;
         description = d;
@@ -37,5 +50,13 @@ public class AugmentSlot : MonoBehaviour
         DescriptionBox.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = description;
         popup.SetActive(true);
         asm.regenerateNegativeOptions(this);
+    }
+
+    public void updateNegative(int i, string d)
+    {
+        negativeId = i;
+        negativeDescription = d;
+        AugmentDataTransfer adt = GameObject.FindGameObjectWithTag("adt").GetComponent<AugmentDataTransfer>();
+        adt.negativeids[index] = i;
     }
 }

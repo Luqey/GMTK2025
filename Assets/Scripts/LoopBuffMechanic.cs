@@ -4,13 +4,14 @@ using UnityEngine;
 public class LoopBuffMechanic : MonoBehaviour
 {
     [SerializeField] private int numBuffs = 6;
-    private PlayerScript player;
-    private Timer timer;
+    public PlayerScript player;
+    public Timer timer;
     private float duration = 0f; //Total time (Last time record)
     private float intervals; //Time between buff activation
     private float time = 0f; //Float variable that keeps track of time lapsed
     private int buffId = 0;
-    [SerializeField] private List<BuffType> buffs = new List<BuffType>(); //List of different types of buffs
+    [SerializeField] public List<BuffType> buffs = new List<BuffType>(); //List of different types of buffs
+    [SerializeField] public List<BuffType> negatives = new List<BuffType>(); //List of different types of negative buffs
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,7 +24,8 @@ public class LoopBuffMechanic : MonoBehaviour
             addBuffToList(i, i);
         }
         */
-        addBuffToList(5, 0);
+        addBuffToList(5, 1, 0);
+        Reset();
     }
 
     // Update is called once per frame
@@ -43,11 +45,12 @@ public class LoopBuffMechanic : MonoBehaviour
     void activateBuff(int id)
     {
         if (buffs[id] != null) buffs[id].applyBuff(player, intervals);
+        if (negatives[id] != null) negatives[id].applyBuff(player, intervals);
     }
     //adds an augment from the list to the ones in play
-    public void addBuffToList(int id, int position)
+    public void addBuffToList(int id, int r, int position)
     {
-        if (position < numBuffs) buffs[position].setBuff(id);
+        if (position < numBuffs) buffs[position].setBuff(id, r);
         else Debug.Log("Position out of Range! Cannot add augment to list!");
     }
     //removes an augment from the loop
@@ -55,6 +58,15 @@ public class LoopBuffMechanic : MonoBehaviour
     {
         if (position < numBuffs) buffs[position].factoryReset();
         else Debug.Log("Position out of Range! Cannot remove augment that doesn't exist!");
+    }
+
+    public void setBuffList(List<int> ids, List<int> rs, List<int> ns)
+    {
+        for (int i = 0; i < ids.Count; i++)
+        {
+            buffs[i].setBuff(ids[i], rs[i]);
+            negatives[i].setBuff(ns[i], -1);
+        }
     }
 
     public void Reset()

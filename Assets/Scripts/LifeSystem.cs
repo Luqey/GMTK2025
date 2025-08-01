@@ -25,6 +25,11 @@ public class LifeSystem : MonoBehaviour
         lives += amount;
         lifeCount.text = lives.ToString();
     }
+    public void setLives(int amount)
+    {
+        lives += amount;
+        lifeCount.text = lives.ToString();
+    }
     public int getLives()
     {
         return lives;
