@@ -6,9 +6,9 @@ public class LoopBuffMechanic : MonoBehaviour
     [SerializeField] private int numBuffs = 6;
     public PlayerScript player;
     public Timer timer;
-    private float duration = 0f; //Total time (Last time record)
+    public float duration = 0f; //Total time (Last time record)
     private float intervals; //Time between buff activation
-    private float time = 0f; //Float variable that keeps track of time lapsed
+    public float time = 0f; //Float variable that keeps track of time lapsed
     private int buffId = 0;
     [SerializeField] public List<BuffType> buffs = new List<BuffType>(); //List of different types of buffs
     [SerializeField] public List<BuffType> negatives = new List<BuffType>(); //List of different types of negative buffs
@@ -34,16 +34,32 @@ public class LoopBuffMechanic : MonoBehaviour
         if (timer.isTimerActive() && duration != 0f)
         {
             time += Time.deltaTime;
-            if (time >= (intervals * (buffId + 1)) && buffId != numBuffs)
+            if (buffId >= 3)
             {
-                activateBuff(buffId);
-                buffId++;
+                if (time >= (intervals * (buffId + 2)) && buffId != numBuffs)
+                {
+                    activateBuff(buffId);
+                    buffId++;
+                }
+            }
+            else
+            {
+                if (time >= (intervals * (buffId + 1)) && buffId != numBuffs)
+                {
+                    activateBuff(buffId);
+                    buffId++;
+                }
             }
         }
     }
 
     void activateBuff(int id)
     {
+        if (id == 3)
+        {
+            if (buffs[id] != null) buffs[id].applyBuff(player, intervals * 2);
+            if (negatives[id] != null) negatives[id].applyBuff(player, intervals * 2);
+        }
         if (buffs[id] != null) buffs[id].applyBuff(player, intervals);
         if (negatives[id] != null) negatives[id].applyBuff(player, intervals);
     }
@@ -82,6 +98,6 @@ public class LoopBuffMechanic : MonoBehaviour
     public void setDuration(float timeVar)
     {
         duration = timeVar;
-        intervals = duration / numBuffs;
+        intervals = duration / 8;
     }
 }

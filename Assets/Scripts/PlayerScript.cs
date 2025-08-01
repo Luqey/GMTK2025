@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -200,14 +201,29 @@ public class PlayerScript : MonoBehaviour
                         {
                             xSpeed += accelRate * 0.01f;
                         }
-                        if (rigid.linearVelocityX == 0)
+                        if (Mathf.Abs(rigid.linearVelocityX) < 0.1f)
                         {
                             xSpeed = 0;
+                        }
+                    }
+                    else if (xSpeed == 0)
+                    {
+                        if ((maxSpeed * speedMult) - xSpeed < accelRate * 0.01f && onGround >= 0)
+                        {
+                            xSpeed = maxSpeed * speedMult;
+                        }
+                        else if (xSpeed < maxSpeed * speedMult)
+                        {
+                            xSpeed += accelRate * 0.01f;
                         }
                     }
                     else
                     {
                         if (!isCrouched) xSpeed += accelRate * 0.02f;
+                        if (Mathf.Abs(rigid.linearVelocityX) < 0.1f)
+                        {
+                            xSpeed = 0;
+                        }
                     }
                     break;
                 case -1:
@@ -221,14 +237,29 @@ public class PlayerScript : MonoBehaviour
                         {
                             xSpeed -= accelRate * 0.01f;
                         }
-                        if (rigid.linearVelocityX == 0)
+                        if (Mathf.Abs(rigid.linearVelocityX) < 0.1f)
                         {
                             xSpeed = 0;
                         }
                     }
+                    else if (xSpeed == 0)
+                    {
+                        if ((maxSpeed * speedMult) - Mathf.Abs(xSpeed) < accelRate * 0.01f && onGround >= 0)
+                        {
+                            xSpeed = -(maxSpeed * speedMult);
+                        }
+                        else if (xSpeed > -(maxSpeed * speedMult))
+                        {
+                            xSpeed -= accelRate * 0.01f;
+                        }
+                    }
                     else
                     {
-                        xSpeed -= accelRate * 0.02f;
+                        if (!isCrouched) xSpeed -= accelRate * 0.02f;
+                        if (Mathf.Abs(rigid.linearVelocityX) < 0.1f)
+                        {
+                            xSpeed = 0;
+                        }
                     }
                     break;
             }
@@ -251,12 +282,6 @@ public class PlayerScript : MonoBehaviour
         {
             xSpeed = 2f * (sprenderer.flipX ? -1 : 1);
         } 
-        rigid.linearVelocity = new Vector2(xSpeed + ((isDashing ? dashPower : 0) * (sprenderer.flipX ? -1 : 1)), rigid.linearVelocity.y);
-        if (frameCounter % 5 == 0 && !alreadyRecorded)
-        {
-            ghostRecording.Add(new ghostPoint(transform.position, transform.eulerAngles, transform.localScale, sprenderer.sprite, !sprenderer.flipX));
-        }
-        frameCounter++;
         if (Math.Abs(rigid.linearVelocityY) < 0.01f) rigid.linearVelocityY = 0;
         if (rigid.linearVelocityY < 0)
         {
@@ -268,7 +293,7 @@ public class PlayerScript : MonoBehaviour
             myAnim.SetBool("hasLanded", true);
             myAnim.SetBool("isFalling", false);
         }
-        if (Math.Abs(xSpeed) > 0.1f)
+        if (Math.Abs(xSpeed) > 0.1f && Math.Abs(rigid.linearVelocityX) > 0.1f)
         {
             myAnim.SetBool("isRunning", true);
             sprenderer.flipX = xSpeed < 0;
@@ -277,6 +302,13 @@ public class PlayerScript : MonoBehaviour
         {
             myAnim.SetBool("isRunning", false);
         }
+        rigid.linearVelocity = new Vector2(xSpeed + ((isDashing ? dashPower : 0) * (sprenderer.flipX ? -1 : 1)), rigid.linearVelocity.y);
+        if (frameCounter % 5 == 0 && !alreadyRecorded)
+        {
+            ghostRecording.Add(new ghostPoint(transform.position, transform.eulerAngles, transform.localScale, sprenderer.sprite, !sprenderer.flipX));
+        }
+        frameCounter++;
+        
     }
 
     public void recordingTest()
