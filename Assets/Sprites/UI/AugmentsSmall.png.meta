@@ -114,8 +114,8 @@ TextureImporter:
         serializedVersion: 2
         x: 1
         y: 1
-        width: 11
-        height: 11
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: AugmentsSmall_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 21
         y: 3
-        width: 7
-        height: 7
+        width: 11
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +156,10 @@ TextureImporter:
       name: AugmentsSmall_2
       rect:
         serializedVersion: 2
-        x: 29
+        x: 39
         y: 3
-        width: 7
-        height: 7
+        width: 11
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,10 +178,10 @@ TextureImporter:
       name: AugmentsSmall_3
       rect:
         serializedVersion: 2
-        x: 42
+        x: 57
         y: 3
-        width: 7
-        height: 7
+        width: 11
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
