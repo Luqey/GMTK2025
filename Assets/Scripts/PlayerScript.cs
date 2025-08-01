@@ -36,6 +36,8 @@ public class PlayerScript : MonoBehaviour
     int frameStartPressingJump;
     private bool isCrouched = false;
     private bool cannotStand = false; //used for checking if the player can stand up
+    [Tooltip("Multiplies with acceleration rate, keep it very small")]
+    [SerializeField] float slideDecelerationRate = 0.001f; 
     [SerializeField] private float dashPower = 20f;
     private bool isDashing = false;
     private int jumpCount = 1;
@@ -122,7 +124,7 @@ public class PlayerScript : MonoBehaviour
             onGround = -1;
             jumpCooldown = 5;
         }
-        if ((onGround >= 0 || jumpsMade < jumpCount) && jumpBuffer >= 0 && jumpCooldown < 0 && !isCrouched)
+        if ((onGround >= 0 || jumpsMade < jumpCount) && jumpBuffer >= 0 && jumpCooldown < 0 && !isCrouched && !cannotStand)
         {
             myAnim.Play("JumpUp");
             myAnim.SetBool("isFalling", false);
@@ -147,7 +149,8 @@ public class PlayerScript : MonoBehaviour
         }
         if (isCrouched)
         {
-            //myAnim.setBool("isCrouching",true);
+            cannotStand = Physics2D.BoxCast(new Vector2(transform.position.x, transform.position.y) + new Vector2(0, 0.5f) + GetComponent<Collider2D>().offset, new Vector2(0.85f, 1), 0, Vector2.down, 0.1f, groundMask);
+            myAnim.SetBool("isSliding", true);
             gameObject.GetComponent<CapsuleCollider2D>().size = new Vector2(2f, 1f);
             gameObject.GetComponent<CapsuleCollider2D>().direction = CapsuleDirection2D.Horizontal;
             gameObject.GetComponent<CapsuleCollider2D>().offset = new Vector2(0, -1.05f);
@@ -158,12 +161,12 @@ public class PlayerScript : MonoBehaviour
             else
             {
                 //myAnim.Play("Slide");
-                xSpeed += accelRate * 0.0005f * (xSpeed > 0 ? -1 : 1);
+                xSpeed += accelRate * slideDecelerationRate * (xSpeed > 0 ? -1 : 1);
             }
         }
-        else
+        else if (!cannotStand)
         {
-            //myAnim.setBool("isCrouching",false);
+            myAnim.SetBool("isSliding", false);
             gameObject.GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 2f);
             gameObject.GetComponent<CapsuleCollider2D>().direction = CapsuleDirection2D.Vertical;
             gameObject.GetComponent<CapsuleCollider2D>().offset = new Vector2(0, -0.55f);
@@ -229,7 +232,25 @@ public class PlayerScript : MonoBehaviour
                     }
                     break;
             }
+        } else {
+            if (gameObject.GetComponent<CapsuleCollider2D>().direction == CapsuleDirection2D.Horizontal)
+                cannotStand = Physics2D.BoxCast(new Vector2(transform.position.x, transform.position.y) + new Vector2(0, 0.5f) + GetComponent<Collider2D>().offset, new Vector2(0.85f, 1), 0, Vector2.down, 0.1f, groundMask);
+            if (Mathf.Abs(xSpeed) < accelRate * 0.01f)
+            {
+                xSpeed = 0;
+            }
+            else
+            {
+                //myAnim.Play("Slide");
+                xSpeed += accelRate * slideDecelerationRate * (xSpeed > 0 ? -1 : 1);
+            }
         }
+        //Debug.Log(cannotStand);
+        //If the player cannot stand and their velocity is 0, move them until they can stand
+        if (cannotStand && xSpeed == 0)
+        {
+            xSpeed = 2f * (sprenderer.flipX ? -1 : 1);
+        } 
         rigid.linearVelocity = new Vector2(xSpeed + ((isDashing ? dashPower : 0) * (sprenderer.flipX ? -1 : 1)), rigid.linearVelocity.y);
         if (frameCounter % 5 == 0 && !alreadyRecorded)
         {
