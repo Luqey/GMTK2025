@@ -122,7 +122,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1280
+        y: 1600
         width: 694
         height: 320
       alignment: 0
@@ -144,7 +144,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 960
+        y: 1280
         width: 694
         height: 320
       alignment: 0
@@ -166,7 +166,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 640
+        y: 960
         width: 694
         height: 320
       alignment: 0
@@ -188,7 +188,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
+        y: 640
         width: 694
         height: 320
       alignment: 0
@@ -210,7 +210,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 320
         width: 694
         height: 320
       alignment: 0
@@ -231,10 +231,32 @@ TextureImporter:
       name: Background_5
       rect:
         serializedVersion: 2
+        x: 0
+        y: 0
+        width: 694
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11570d2b1af4bba489440c22cf52a823
+      internalID: 209003522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background_6
+      rect:
+        serializedVersion: 2
         x: 86
-        y: 643
+        y: 960
         width: 72
-        height: 232
+        height: 231
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,8 +265,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f40f11a321804e49ac511f716892398
-      internalID: 209003522
+      spriteID: 23b64553baa4f614099c30bec980573f
+      internalID: -1363823227
       vertices: []
       indices: 
       edges: []
@@ -269,6 +291,7 @@ TextureImporter:
       Background_3: -134755134
       Background_4: 1475990415
       Background_5: 209003522
+      Background_6: -1363823227
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
