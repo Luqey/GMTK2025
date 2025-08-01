@@ -23,7 +23,7 @@ public class LoopBuffMechanic : MonoBehaviour
             addBuffToList(i, i);
         }
         */
-        addBuffToList(4, 0);
+        addBuffToList(7, 0);
     }
 
     // Update is called once per frame

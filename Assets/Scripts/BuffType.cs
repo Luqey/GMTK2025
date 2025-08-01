@@ -14,6 +14,8 @@ public class BuffType : MonoBehaviour
     private float gravityMultiplier = 1f;
     private bool dash = false;
     private bool extraJump = false;
+    private bool invert = false;
+    private bool teleport = false;
     private bool intervalOnly = false;
     private bool isActive = false;
     private Image sprite;
@@ -34,6 +36,8 @@ public class BuffType : MonoBehaviour
         if (intervalOnly) StartCoroutine(intervalBuffTimer(player, interval));
         if (dash) StartCoroutine(applyDash(player));
         if (extraJump) player.addJump(1);
+        if (invert) player.invertControls(true);
+        if (teleport) player.transform.position = DataManager.instance.initialPlayerPosition;
     }
 
     public void setBuff(int id)
@@ -75,6 +79,13 @@ public class BuffType : MonoBehaviour
                             case "jump":
                                 extraJump = bool.Parse(argOverride.Substring(7));
                                 break;
+                            case "invt":
+                                invert = bool.Parse(argOverride.Substring(7));
+                                break;
+                            case "tele":
+                                teleport = bool.Parse(argOverride.Substring(7));
+                                break;
+
                         }
                         fileLines[i] = fileLines[i].Substring(fileLines[i].IndexOf(',') + 1);
                     }
@@ -104,6 +115,12 @@ public class BuffType : MonoBehaviour
                             case "jump":
                                 extraJump = bool.Parse(argOverride.Substring(7));
                                 break;
+                            case "invt":
+                                invert = bool.Parse(argOverride.Substring(7));
+                                break;
+                            case "tele":
+                                teleport = bool.Parse(argOverride.Substring(7));
+                                break;
                         }
                         fileLines[i] = "";
                     }
@@ -122,6 +139,8 @@ public class BuffType : MonoBehaviour
         gravityMultiplier = 1f;
         dash = false;
         intervalOnly = false;
+        extraJump = false;
+        invert = false;
         isActive = false;
     }
 
@@ -132,6 +151,7 @@ public class BuffType : MonoBehaviour
             sprite.color = Color.white;
             player.removeMultipliers(speedMultiplier, jumpMultiplier, accelMultiplier, gravityMultiplier);
             if (extraJump) player.addJump(-1);
+            if (invert) player.invertControls(false);
             isActive = false;
         }
     }

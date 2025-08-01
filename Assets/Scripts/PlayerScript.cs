@@ -38,6 +38,7 @@ public class PlayerScript : MonoBehaviour
     private bool isDashing = false;
     private int jumpCount = 1;
     private int jumpsMade = 0;
+    private bool invert = false;
 
     // will break after 5965 hours of continuous playtime.
     // that's... a long time.... - Cherry
@@ -128,7 +129,7 @@ public class PlayerScript : MonoBehaviour
             jumpCooldown = 5;
             jumpsMade++;
         }
-        switch ((int)(move.ReadValue<Vector2>().x * 1.5f))
+        switch ((int)(move.ReadValue<Vector2>().x * 1.5f) * (invert ? -1 : 1))
         {
             case 0:
                 if (Mathf.Abs(xSpeed) < accelRate * 0.01f)
@@ -245,5 +246,10 @@ public class PlayerScript : MonoBehaviour
     public void addJump(int num)
     {
         jumpCount += num;
+    }
+
+    public void invertControls(bool toggle)
+    {
+        invert = toggle;
     }
 }
