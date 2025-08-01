@@ -5,7 +5,6 @@ public class SpringScript : MonoBehaviour
 {
     [SerializeField] private float launchPower = 20f;
     private Animator anim;
-    private bool hasSpringed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,15 +17,6 @@ public class SpringScript : MonoBehaviour
             if(collider.gameObject.GetComponent<Rigidbody2D>().linearVelocityY <= 0)
                 collider.gameObject.GetComponent<PlayerScript>().springJump(launchPower);
             if (anim != null) StartCoroutine(springAnimation());
-            //hasSpringed = true;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            //hasSpringed = false;
         }
     }
     IEnumerator springAnimation() {

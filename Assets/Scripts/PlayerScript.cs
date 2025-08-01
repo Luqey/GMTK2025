@@ -34,6 +34,8 @@ public class PlayerScript : MonoBehaviour
     // don't really need this, i just put this to be safe because sometimes cases can come up where unity can read multiple jump inputs when we only want one
     int jumpCooldown;
     int frameStartPressingJump;
+    private bool isCrouched = false;
+    private bool cannotStand = false; //used for checking if the player can stand up
     [SerializeField] private float dashPower = 20f;
     private bool isDashing = false;
     private int jumpCount = 1;
@@ -120,7 +122,7 @@ public class PlayerScript : MonoBehaviour
             onGround = -1;
             jumpCooldown = 5;
         }
-        if ((onGround >= 0 || jumpsMade < jumpCount) && jumpBuffer >= 0 && jumpCooldown < 0)
+        if ((onGround >= 0 || jumpsMade < jumpCount) && jumpBuffer >= 0 && jumpCooldown < 0 && !isCrouched)
         {
             myAnim.Play("JumpUp");
             myAnim.SetBool("isFalling", false);
@@ -131,67 +133,102 @@ public class PlayerScript : MonoBehaviour
             jumpCooldown = 5;
             jumpsMade++;
         }
-        switch ((int)(move.ReadValue<Vector2>().x * 1.5f) * (invert ? -1 : 1))
+        switch ((int)(move.ReadValue<Vector2>().y * 1.5f))
         {
+            case 1:
+                isCrouched = invert;
+                break;
             case 0:
-                if (Mathf.Abs(xSpeed) < accelRate * 0.01f)
-                {
-                    xSpeed = 0;
-                }
-                else
-                {
-                    if (xSpeed > 0)
+                isCrouched = false;
+                break; 
+            case -1:
+                isCrouched = !invert;
+                break;
+        }
+        if (isCrouched)
+        {
+            //myAnim.setBool("isCrouching",true);
+            gameObject.GetComponent<CapsuleCollider2D>().size = new Vector2(2f, 1f);
+            gameObject.GetComponent<CapsuleCollider2D>().direction = CapsuleDirection2D.Horizontal;
+            gameObject.GetComponent<CapsuleCollider2D>().offset = new Vector2(0, -1.05f);
+            if (Mathf.Abs(xSpeed) < accelRate * 0.01f)
+            {
+                xSpeed = 0;
+            }
+            else
+            {
+                //myAnim.Play("Slide");
+                xSpeed += accelRate * 0.0005f * (xSpeed > 0 ? -1 : 1);
+            }
+        }
+        else
+        {
+            //myAnim.setBool("isCrouching",false);
+            gameObject.GetComponent<CapsuleCollider2D>().size = new Vector2(1f, 2f);
+            gameObject.GetComponent<CapsuleCollider2D>().direction = CapsuleDirection2D.Vertical;
+            gameObject.GetComponent<CapsuleCollider2D>().offset = new Vector2(0, -0.55f);
+            switch ((int)(move.ReadValue<Vector2>().x * 1.5f) * (invert ? -1 : 1))
+            {
+                case 0:
+                    if (Mathf.Abs(xSpeed) < accelRate * 0.01f)
                     {
-                        xSpeed -= accelRate * 0.01f;
+                        xSpeed = 0;
                     }
                     else
                     {
-                        xSpeed += accelRate * 0.01f;
+                        if (xSpeed > 0)
+                        {
+                            xSpeed -= accelRate * 0.01f;
+                        }
+                        else
+                        {
+                            xSpeed += accelRate * 0.01f;
+                        }
                     }
-                }
-                break;
-            case 1:
-                if (xSpeed > 0)
-                {
-                    if ((maxSpeed * speedMult) - xSpeed < accelRate * 0.01f && onGround >= 0)
+                    break;
+                case 1:
+                    if (xSpeed > 0)
                     {
-                        xSpeed = maxSpeed * speedMult;
+                        if ((maxSpeed * speedMult) - xSpeed < accelRate * 0.01f && onGround >= 0)
+                        {
+                            xSpeed = maxSpeed * speedMult;
+                        }
+                        else if (xSpeed < maxSpeed * speedMult)
+                        {
+                            xSpeed += accelRate * 0.01f;
+                        }
+                        if (rigid.linearVelocityX == 0)
+                        {
+                            xSpeed = 0;
+                        }
                     }
-                    else if (xSpeed < maxSpeed * speedMult)
+                    else
                     {
-                        xSpeed += accelRate * 0.01f;
+                        if (!isCrouched) xSpeed += accelRate * 0.02f;
                     }
-                    if (rigid.linearVelocityX == 0)
+                    break;
+                case -1:
+                    if (xSpeed < 0)
                     {
-                        xSpeed = 0;
+                        if ((maxSpeed * speedMult) - Mathf.Abs(xSpeed) < accelRate * 0.01f && onGround >= 0)
+                        {
+                            xSpeed = -(maxSpeed * speedMult);
+                        }
+                        else if (xSpeed > -(maxSpeed * speedMult))
+                        {
+                            xSpeed -= accelRate * 0.01f;
+                        }
+                        if (rigid.linearVelocityX == 0)
+                        {
+                            xSpeed = 0;
+                        }
                     }
-                }
-                else
-                {
-                    xSpeed += accelRate * 0.02f;
-                }
-                break;
-            case -1:
-                if (xSpeed < 0)
-                {
-                    if ((maxSpeed * speedMult) - Mathf.Abs(xSpeed) < accelRate * 0.01f && onGround >= 0)
+                    else
                     {
-                        xSpeed = -(maxSpeed * speedMult);
+                        xSpeed -= accelRate * 0.02f;
                     }
-                    else if (xSpeed > -(maxSpeed * speedMult))
-                    {
-                        xSpeed -= accelRate * 0.01f;
-                    }
-                    if (rigid.linearVelocityX == 0)
-                    {
-                        xSpeed = 0;
-                    }
-                }
-                else
-                {
-                    xSpeed -= accelRate * 0.02f;
-                }
-                break;
+                    break;
+            }
         }
         rigid.linearVelocity = new Vector2(xSpeed + ((isDashing ? dashPower : 0) * (sprenderer.flipX ? -1 : 1)), rigid.linearVelocity.y);
         if (frameCounter % 5 == 0 && !alreadyRecorded)
