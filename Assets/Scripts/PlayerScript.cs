@@ -122,6 +122,8 @@ public class PlayerScript : MonoBehaviour
         }
         if ((onGround >= 0 || jumpsMade < jumpCount) && jumpBuffer >= 0 && jumpCooldown < 0)
         {
+            myAnim.Play("JumpUp");
+            myAnim.SetBool("isFalling", false);
             frameStartPressingJump = frameCounter;
             rigid.linearVelocityY = jumpPower * jumpMult;
             jumpBuffer = -1;
@@ -197,9 +199,16 @@ public class PlayerScript : MonoBehaviour
             ghostRecording.Add(new ghostPoint(transform.position, transform.eulerAngles, transform.localScale, sprenderer.sprite, !sprenderer.flipX));
         }
         frameCounter++;
-        // Animation Stuff Below
-        //myAnim.SetFloat("moveSpeed", xSpeed); 
-
+        if (rigid.linearVelocityY < 0)
+        {
+            myAnim.SetBool("isFalling", true);
+            myAnim.SetBool("hasLanded", false);
+        }
+        else if (rigid.linearVelocityY == 0 && onGround >= 0)
+        {
+            myAnim.SetBool("hasLanded", true);
+            myAnim.SetBool("isFalling", false);
+        }
         if (Math.Abs(xSpeed) > 0.1f)
         {
             myAnim.SetBool("isRunning", true);

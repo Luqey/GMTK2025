@@ -2752,7 +2752,7 @@ MonoBehaviour:
   maxSpeed: 8
   accelRate: 64
   jumpPower: 8
-  coyoteTimeFrames: 100
+  coyoteTimeFrames: 10
   jumpBufferSize: 10
   groundMask:
     serializedVersion: 2
