@@ -11,8 +11,8 @@ public class Timer : MonoBehaviour
     public LifeSystem lives;
     private PlayerScript player;
     [SerializeField] private TMP_Text timerText;
-    [SerializeField] public TMP_Text recordTimeText;
-    [SerializeField] public TMP_Text previousTimeText;
+    public TMP_Text recordTimeText;
+    public TMP_Text previousTimeText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
