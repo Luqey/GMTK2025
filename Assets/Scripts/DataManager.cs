@@ -7,6 +7,7 @@ public class DataManager : MonoBehaviour
     public static DataManager instance;
     private GameObject player;
     private Timer timer;
+    [SerializeField] private GameObject pauseScreen;
     public Vector2 initialPlayerPosition;
     public LoopBuffMechanic lbm;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
