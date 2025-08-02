@@ -80,8 +80,9 @@ public class DataManager : MonoBehaviour
     public void startRewind()
     {
         Debug.Log("dumbtest0");
-        player.GetComponent<PlayerScript>().startRewind();
-        timer.startRewind();
+        // player.GetComponent<PlayerScript>().startRewind();
+        // timer.startRewind();
+        resetLevel();
     }
     public void resetLevel()
     {
@@ -107,7 +108,7 @@ public class DataManager : MonoBehaviour
         adt.previousTime = timer.previousTime;
         Debug.Log(timer.previousTime);
         adt.lives = timer.lives.getLives();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         // player.transform.position = initialPlayerPosition;
         // player.GetComponent<PlayerScript>().OnEnable();
         // timer.resetTimer();

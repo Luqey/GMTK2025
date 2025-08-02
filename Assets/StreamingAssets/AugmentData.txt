@@ -6,3 +6,4 @@ Dash|dash = true;
 Extra Jump|jump = true;
 Invert|intO = true,invt = true;
 Teleport|tele = true;
+Test Negative|sMlt = 1;

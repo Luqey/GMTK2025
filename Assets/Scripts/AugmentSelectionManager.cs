@@ -14,7 +14,7 @@ public class AugmentSelectionManager : MonoBehaviour
     void Start()
     {
         possibleAugments = new List<Augment>() { new Augment(0, 0, 100, "Speed I"), new Augment(1, 1, 30, "Speed II"), new Augment(2, 2, 8, "Spring Shoes"), new Augment(3, 2, 3, "Athletic") };
-        possibleNegatives = new List<Augment>() { new Augment(4, -1, 100, "test negative"), new Augment(5, -1, 30, "test negative (internally rare)"), new Augment(6, -1, 8, "test negative (internally legendary)"), new Augment(7, -1, 3, "test negative (internally absurdly rare)") };
+        possibleNegatives = new List<Augment>() { new Augment(8, -1, 100, "test negative"), new Augment(8, -1, 30, "test negative (internally rare)"), new Augment(8, -1, 8, "test negative (internally legendary)"), new Augment(8, -1, 3, "test negative (internally absurdly rare)") };
         StartCoroutine(waitToRegen());
     }
 

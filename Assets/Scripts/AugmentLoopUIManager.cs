@@ -33,6 +33,9 @@ public class AugmentLoopUIManager : MonoBehaviour
             {
                 aslots[i].Populate(adt.rarityDisps[i], adt.ids[i], fileLines[adt.ids[i]].Substring(0, fileLines[adt.ids[i]].IndexOf('|')));
                 aslots[i].negativeId = adt.negativeids[i];
+                Debug.Log(adt.negativeids[i]);
+                if(adt.negativeids[i] != -1)
+                    aslots[i].negativeDescription = fileLines[adt.negativeids[i]].Substring(0, fileLines[adt.negativeids[i]].IndexOf('|'));
             }
             else
             {
