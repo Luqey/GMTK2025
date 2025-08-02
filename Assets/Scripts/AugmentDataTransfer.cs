@@ -43,7 +43,7 @@ public class AugmentDataTransfer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0 && overrideSceneBuffs)
+        if (SceneManager.GetActiveScene().buildIndex == 1 && overrideSceneBuffs)
         {
             LoopBuffMechanic lbm = FindFirstObjectByType<LoopBuffMechanic>();
             lbm.setBuffList(ids, rarityDisps, negativeids);
@@ -56,6 +56,7 @@ public class AugmentDataTransfer : MonoBehaviour
             lbm.timer.lives.setLives(lives);
             lbm.setDuration(previousTime);
             overrideSceneBuffs = false;
+            Debug.Log(previousTime);
         }
     }
 }

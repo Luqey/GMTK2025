@@ -15,7 +15,7 @@ public class LoopProgress : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(lbm.duration > 0)
+        if (lbm.duration > 0 && !lbm.player.isRewinding)
             GetComponent<Image>().sprite = sprites[(int)((lbm.time / lbm.duration) * 40)];
     }
 }

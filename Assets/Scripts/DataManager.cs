@@ -75,10 +75,11 @@ public class DataManager : MonoBehaviour
     }
     public void restartRun()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
     public void startRewind()
     {
+        Debug.Log("dumbtest0");
         player.GetComponent<PlayerScript>().startRewind();
         timer.startRewind();
     }
@@ -104,6 +105,7 @@ public class DataManager : MonoBehaviour
         adt.lastGhost = player.GetComponent<PlayerScript>().ghostRecording;
         adt.recordTime = timer.recordTime;
         adt.previousTime = timer.previousTime;
+        Debug.Log(timer.previousTime);
         adt.lives = timer.lives.getLives();
         SceneManager.LoadScene(1);
         // player.transform.position = initialPlayerPosition;

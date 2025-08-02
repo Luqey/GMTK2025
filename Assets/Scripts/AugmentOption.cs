@@ -68,7 +68,7 @@ public class AugmentOption : MonoBehaviour
             slotForNegative.updateNegative(id, description);
             gameObject.SetActive(false);
             GameObject.FindGameObjectWithTag("adt").GetComponent<AugmentDataTransfer>().overrideSceneBuffs = true;
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
         else
         {

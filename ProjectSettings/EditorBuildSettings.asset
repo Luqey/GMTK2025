@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Cherry's Test Chamber.unity
     guid: 2e80b49068cd82248a9d0e4f2a26ed0e
   - enabled: 1
+    path: Assets/Scenes/Gameplay Scene.unity
+    guid: 9846db50974c932429ac9411ba7adc6d
+  - enabled: 1
     path: Assets/Scenes/Kai - UI Programming.unity
     guid: 4650234c27d84004b939e32b7914e6b8
   m_configObjects:

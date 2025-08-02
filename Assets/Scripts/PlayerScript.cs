@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -51,7 +52,7 @@ public class PlayerScript : MonoBehaviour
     int frameCounter;
 
     Rigidbody2D rigid;
-    private bool isRewinding = false;
+    public bool isRewinding = false;
     private int rewindCount = 0;
     public List<ghostPoint> ghostRecording;
     private Stack<ghostPoint> rewindRecording;
@@ -393,14 +394,18 @@ public class PlayerScript : MonoBehaviour
 
     public void startRewind()
     {
+        Debug.Log("dumbtest1");
         isRewinding = true;
         foreach (ghostPoint g in ghostRecording)
         {
             rewindRecording.Push(g);
         }
+        Debug.Log("dumbtest2");
         rewindCount = rewindRecording.Count;
         rigid.Sleep();
         myAnim.enabled = false;
+        isRewinding = false;
+        SceneManager.LoadScene(2);
     }
 
     public void invertControls(bool toggle)
