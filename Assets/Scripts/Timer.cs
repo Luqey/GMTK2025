@@ -24,7 +24,6 @@ public class Timer : MonoBehaviour
         player = FindFirstObjectByType<PlayerScript>();
         StartCoroutine("countdown");
         player.OnDisable();
-        Debug.Log("OnDisable");
     }
 
     // Update is called once per frame

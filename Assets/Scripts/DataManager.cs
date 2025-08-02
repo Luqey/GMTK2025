@@ -48,7 +48,7 @@ public class DataManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!endScreen.activeSelf || !countdownTimer.activeSelf)
+        if (!endScreen.activeSelf && !countdownTimer.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Escape)) isPaused = !isPaused;
             if (isPaused)

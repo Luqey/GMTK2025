@@ -27,7 +27,7 @@ public class PlayerScript : MonoBehaviour
     //Multipliers from buffs
     private float speedMult = 1f;
     private float jumpMult = 1f;
-
+    public bool canMove;
     float xSpeed;
     // onGround >= 0 = counts as on the ground
     int onGround;
@@ -78,7 +78,7 @@ public class PlayerScript : MonoBehaviour
 
     public void OnEnable()
     {
-        Debug.Log("OnEnable");
+        canMove = true;
         move = controls.Player.Move;
         move.Enable();
         jump = controls.Player.Jump;
@@ -87,6 +87,7 @@ public class PlayerScript : MonoBehaviour
 
     public void OnDisable()
     {
+        canMove = false;
         move.Disable();
         jump.Disable();
     }

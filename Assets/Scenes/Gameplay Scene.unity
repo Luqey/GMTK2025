@@ -433115,7 +433115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 1690304952}
   endScreen: {fileID: 346414732}
-  countdownTimer: {fileID: 0}
+  countdownTimer: {fileID: 1630627185}
   pauseScreenAnchorPos: {x: 0, y: 0}
   initialPlayerPosition: {x: 0, y: 0}
   lbm: {fileID: 256186303}
