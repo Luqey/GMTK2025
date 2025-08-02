@@ -16,6 +16,7 @@ public class AugmentSlot : MonoBehaviour
     public string negativeDescription;
     public AugmentSelectionManager asm;
     public int index;
+    public TMP_Text negativeText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,7 +26,14 @@ public class AugmentSlot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (negativeId == -1)
+        {
+            negativeText.text = "Choose a downside";
+        }
+        else
+        {
+            negativeText.text = negativeDescription;
+        }
     }
     public void Populate(int r, int i, string d)
     {
