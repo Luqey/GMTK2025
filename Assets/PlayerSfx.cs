@@ -6,34 +6,29 @@ public class PlayerSfx : MonoBehaviour
     [SerializeField] private AudioClip[] footstepSfx;
     [SerializeField] private AudioClip[] jumpSfx;
     [SerializeField] private AudioClip[] landingSfx;
-    private AudioSource audioSource;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
+    [SerializeField] private AudioSource audioSource1;
+    [SerializeField] private AudioSource audioSource2;
 
     public void playFootstep()
     {
         if (footstepSfx.Length == 0) return;
         int rand = RandomNumberGenerator.GetInt32(0, footstepSfx.Length);
-        audioSource.clip = footstepSfx[rand];
-        audioSource.Play();
+        audioSource1.clip = footstepSfx[rand];
+        audioSource1.Play();
     }
 
     public void playJump()
     {
         if (jumpSfx.Length == 0) return;
         int rand = RandomNumberGenerator.GetInt32(0, jumpSfx.Length);
-        audioSource.clip = jumpSfx[rand];
-        audioSource.Play();
+        audioSource2.clip = jumpSfx[rand];
+        audioSource2.Play();
     }
     public void playLand()
     {
         if (landingSfx.Length == 0) return;
         int rand = RandomNumberGenerator.GetInt32(0, landingSfx.Length);
-        audioSource.clip = landingSfx[rand];
-        audioSource.Play();
+        audioSource2.clip = landingSfx[rand];
+        audioSource2.Play();
     }
 }
