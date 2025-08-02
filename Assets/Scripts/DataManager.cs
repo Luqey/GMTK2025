@@ -77,6 +77,10 @@ public class DataManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    public void startRewind()
+    {
+        player.GetComponent<PlayerScript>().startRewind();
+    }
     public void resetLevel()
     {
         AugmentDataTransfer adt = GameObject.FindGameObjectWithTag("adt").GetComponent<AugmentDataTransfer>();
