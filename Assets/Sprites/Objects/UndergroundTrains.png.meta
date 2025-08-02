@@ -1,0 +1,271 @@
+fileFormatVersion: 2
+guid: d6ba81122b0b5234886aa2aef313ad05
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 59076273358810185
+    second: UndergroundTrains_0
+  - first:
+      213: -783127069903616997
+    second: UndergroundTrains_1
+  - first:
+      213: 3409642793548930505
+    second: UndergroundTrains_2
+  - first:
+      213: -7785810690703529703
+    second: UndergroundTrains_3
+  - first:
+      213: 7990775598796476459
+    second: UndergroundTrains_4
+  - first:
+      213: -6939601535557194439
+    second: UndergroundTrains_5
+  - first:
+      213: 4770904204675587917
+    second: UndergroundTrains_6
+  - first:
+      213: 2512782465928320731
+    second: UndergroundTrains_7
+  - first:
+      213: 8631975908680626708
+    second: UndergroundTrains_8
+  - first:
+      213: 2425093043865271320
+    second: UndergroundTrains_9
+  - first:
+      213: 5491093860262948121
+    second: UndergroundTrains_10
+  - first:
+      213: -607114584562393847
+    second: UndergroundTrains_11
+  - first:
+      213: 2270345565295560753
+    second: UndergroundTrains_12
+  - first:
+      213: 9014983070312301155
+    second: UndergroundTrains_13
+  - first:
+      213: -1018436379606497135
+    second: UndergroundTrains_14
+  - first:
+      213: 3005210698177639115
+    second: UndergroundTrains_15
+  - first:
+      213: -8796815670542460870
+    second: UndergroundTrains_16
+  - first:
+      213: 6157384836184869052
+    second: UndergroundTrains_17
+  - first:
+      213: -8522259619788160408
+    second: UndergroundTrains_18
+  - first:
+      213: -7617838697357283729
+    second: UndergroundTrains_19
+  - first:
+      213: 7099093655644702769
+    second: UndergroundTrains_20
+  - first:
+      213: -7578892975460890820
+    second: UndergroundTrains_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UndergroundTrains_0
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 37
+        width: 202
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94ca430ce81e1d000800000000000000
+      internalID: 59076273358810185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UndergroundTrains_1
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 25
+        width: 258
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1407604416c125f0800000000000000
+      internalID: -783127069903616997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UndergroundTrains_2
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 5
+        width: 335
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cd54704e0c715f20800000000000000
+      internalID: 3409642793548930505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 40d0e24bcaf8f5645aae6c77160b4fb4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UndergroundTrains_0: 59076273358810185
+      UndergroundTrains_1: -783127069903616997
+      UndergroundTrains_10: 5491093860262948121
+      UndergroundTrains_11: -607114584562393847
+      UndergroundTrains_12: 2270345565295560753
+      UndergroundTrains_13: 9014983070312301155
+      UndergroundTrains_14: -1018436379606497135
+      UndergroundTrains_15: 3005210698177639115
+      UndergroundTrains_16: -8796815670542460870
+      UndergroundTrains_17: 6157384836184869052
+      UndergroundTrains_18: -8522259619788160408
+      UndergroundTrains_19: -7617838697357283729
+      UndergroundTrains_2: 3409642793548930505
+      UndergroundTrains_20: 7099093655644702769
+      UndergroundTrains_21: -7578892975460890820
+      UndergroundTrains_3: -7785810690703529703
+      UndergroundTrains_4: 7990775598796476459
+      UndergroundTrains_5: -6939601535557194439
+      UndergroundTrains_6: 4770904204675587917
+      UndergroundTrains_7: 2512782465928320731
+      UndergroundTrains_8: 8631975908680626708
+      UndergroundTrains_9: 2425093043865271320
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
