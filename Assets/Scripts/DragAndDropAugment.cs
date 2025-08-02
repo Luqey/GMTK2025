@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -45,7 +47,7 @@ public class DragAndDropAugment : MonoBehaviour
     {
         if (inHand)
         {
-            transform.position = mainCamera.ScreenToWorldPoint(new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, 5));
+            transform.position = transform.position + (mainCamera.ScreenToWorldPoint(new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, 5)) - transform.position) * Time.deltaTime * 20;
             if (click.ReadValue<float>() != 0 && mouseInputLastFrame == 0)
             {
                 Collider2D hit = Physics2D.OverlapCircle(transform.position, 3.0f, UImask);
@@ -54,11 +56,21 @@ public class DragAndDropAugment : MonoBehaviour
                 {
                     inHand = false;
                     hit.gameObject.GetComponent<AugmentSlot>().Populate(rarity, id, description);
-                    gameObject.SetActive(false);
+                    StartCoroutine(disappear());
                 }
             }
         }
-        
+
         mouseInputLastFrame = click.ReadValue<float>();
+    }
+
+    IEnumerator disappear()
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            transform.localScale = new Vector3(16 * ((30 - i) / 30), 16 * ((30 - i) / 30), 16 * ((30 - i) / 30));
+            yield return new WaitForFixedUpdate();
+        }
+        gameObject.SetActive(false);
     }
 }

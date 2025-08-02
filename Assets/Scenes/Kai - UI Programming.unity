@@ -431,6 +431,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3096452412947248996, guid: fd3814a41f446714f8e4ac7273c1ff4b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3876835185448387874, guid: fd3814a41f446714f8e4ac7273c1ff4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -139
@@ -483,6 +487,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5294802602976060100, guid: fd3814a41f446714f8e4ac7273c1ff4b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2181528209277238016, guid: d42e883d43d809846949a15b35cf41bb, type: 2}
     - target: {fileID: 7288153365508335587, guid: fd3814a41f446714f8e4ac7273c1ff4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.78125
@@ -1337,6 +1345,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5294802602976060100, guid: fd3814a41f446714f8e4ac7273c1ff4b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2181528209277238016, guid: d42e883d43d809846949a15b35cf41bb, type: 2}
     - target: {fileID: 7288153365508335587, guid: fd3814a41f446714f8e4ac7273c1ff4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.78125
@@ -1829,9 +1841,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2219249381373470895, guid: 8f32db13c677e0b46ac1954ad292ca23, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219249381373470895, guid: 8f32db13c677e0b46ac1954ad292ca23, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2881822352912304385, guid: 8f32db13c677e0b46ac1954ad292ca23, type: 3}
       propertyPath: m_Name
       value: AugmentsSmall_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3975687145742648976, guid: 8f32db13c677e0b46ac1954ad292ca23, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4461103850369841440, guid: 8f32db13c677e0b46ac1954ad292ca23, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1952,7 +1976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5892340365592174933, guid: fd3814a41f446714f8e4ac7273c1ff4b, type: 3}
       propertyPath: m_fontSizeBase
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7809989833610756757, guid: fd3814a41f446714f8e4ac7273c1ff4b, type: 3}
       propertyPath: m_Mesh
