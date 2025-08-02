@@ -6,7 +6,7 @@ public class MainCameraScript : MonoBehaviour
 
     public GameObject player;
     [SerializeField] float xOffset = 0f;
-    [SerializeField] float yOffset = 0f;
+    [SerializeField] public float yOffset = 0f;
     Vector2 vel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
