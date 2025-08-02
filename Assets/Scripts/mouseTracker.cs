@@ -39,6 +39,11 @@ public class mouseTracker : MonoBehaviour
         {
             hit.gameObject.GetComponent<AugmentOption>().framesToShowDescription = 5;
         }
+        if (hit && hit.gameObject.GetComponent<AugmentSlot>() != null)
+        {
+            hit.gameObject.GetComponent<AugmentSlot>().show();
+            hit.gameObject.GetComponent<AugmentSlot>().lastTouchingTime = Time.time;
+        }
         if (click.ReadValue<float>() != 0 && mouseInputLastFrame == 0)
         {
             Debug.Log(hit);

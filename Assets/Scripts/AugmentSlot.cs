@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Xml;
 using TMPro;
 using UnityEngine;
 
@@ -17,6 +19,7 @@ public class AugmentSlot : MonoBehaviour
     public AugmentSelectionManager asm;
     public int index;
     public TMP_Text negativeText;
+    public float lastTouchingTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -57,7 +60,10 @@ public class AugmentSlot : MonoBehaviour
         rarityDisplay2.GetComponent<SpriteRenderer>().sprite = rarityLabels2[rarity];
         DescriptionBox.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = description;
         popup.SetActive(true);
+        popup.GetComponent<AugmentPopup>().canLowerDone = false;
+        popup.GetComponent<AugmentPopup>().StartCoroutine(popup.GetComponent<AugmentPopup>().waitCanLowerDone());
         asm.regenerateNegativeOptions(this);
+        StartCoroutine(waitToLower());
     }
 
     public void updateNegative(int i, string d)
@@ -66,5 +72,25 @@ public class AugmentSlot : MonoBehaviour
         negativeDescription = d;
         AugmentDataTransfer adt = GameObject.FindGameObjectWithTag("adt").GetComponent<AugmentDataTransfer>();
         adt.negativeids[index] = i;
+    }
+    public void show()
+    {
+        if (id == -1)
+            return;
+        if (popup.activeSelf)
+            return;
+        popup.SetActive(true);
+        popup.GetComponent<AugmentPopup>().canLowerDone = false;
+        popup.GetComponent<AugmentPopup>().StartCoroutine(popup.GetComponent<AugmentPopup>().waitCanLowerDone());
+        StartCoroutine(waitToLower());
+    }
+
+    IEnumerator waitToLower()
+    {
+        yield return new WaitForSeconds(1.5f);
+        if (Mathf.Abs(Time.time - lastTouchingTime) < 0.1f)
+            StartCoroutine(waitToLower());
+        else
+            popup.GetComponent<AugmentPopup>().lower();
     }
 }
