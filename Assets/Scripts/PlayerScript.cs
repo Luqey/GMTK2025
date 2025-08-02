@@ -285,6 +285,7 @@ public class PlayerScript : MonoBehaviour
         if (Math.Abs(rigid.linearVelocityY) < 0.01f) rigid.linearVelocityY = 0;
         if (rigid.linearVelocityY < 0)
         {
+            if (jumpsMade == 0) jumpsMade++;
             myAnim.SetBool("isFalling", true);
             myAnim.SetBool("hasLanded", false);
         }
