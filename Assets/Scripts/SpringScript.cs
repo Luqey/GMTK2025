@@ -5,6 +5,7 @@ public class SpringScript : MonoBehaviour
 {
     [SerializeField] private float launchPower = 20f;
     private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +15,7 @@ public class SpringScript : MonoBehaviour
     void OnTriggerStay2D(Collider2D collider) {
         if (collider.gameObject.CompareTag("Player"))
         {
-            if(collider.gameObject.GetComponent<Rigidbody2D>().linearVelocityY <= 0)
+            if(collider.gameObject.GetComponent<Rigidbody2D>().linearVelocityY <= 0.01)
                 collider.gameObject.GetComponent<PlayerScript>().springJump(launchPower);
             if (anim != null) StartCoroutine(springAnimation());
         }
