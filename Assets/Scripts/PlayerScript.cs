@@ -284,7 +284,6 @@ public class PlayerScript : MonoBehaviour
                     xSpeed += accelRate * slideDecelerationRate * (xSpeed > 0 ? -1 : 1);
                 }
             }
-            //Debug.Log(cannotStand);
             //If the player cannot stand and their velocity is 0, move them until they can stand
             if (cannotStand && xSpeed == 0)
             {
@@ -322,11 +321,8 @@ public class PlayerScript : MonoBehaviour
         {
             if (rewindRecording != null && counter / 2 < rewindCount - 1)
             {
-                //Debug.Log("Counter = " + counter / 2);
-                //Debug.Log("Stack = " + rewindRecording.Count);
                 if (counter % 2 == 0)
                 {
-                    //Debug.Log(rewindRecording.Peek());
                     rewindPoint = rewindRecording.Pop();
                     transform.position = rewindPoint.position;
                     transform.eulerAngles = rewindPoint.eulerAngles;
@@ -392,7 +388,6 @@ public class PlayerScript : MonoBehaviour
         jumpBuffer = -1;
         jumpCooldown = 5;
         rigid.linearVelocity += new Vector2(0, springPower);
-        Debug.Log("Spring");
         myAnim.Play("JumpUp");
     }
 
@@ -404,7 +399,6 @@ public class PlayerScript : MonoBehaviour
             rewindRecording.Push(g);
         }
         rewindCount = rewindRecording.Count;
-        Debug.Log(rewindRecording.Count + " " + ghostRecording.Count);
         rigid.Sleep();
         myAnim.enabled = false;
     }
