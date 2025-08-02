@@ -54,6 +54,7 @@ public class DataManager : MonoBehaviour
             if (isPaused)
             {
                 player.GetComponent<PlayerScript>().OnDisable();
+                player.GetComponent<Rigidbody2D>().Sleep();
                 if (timer.isTimerActive()) timer.toggleTimer();
                 if ((Vector2)pauseScreen.position != pauseScreenAnchorPos)
                 {
@@ -66,12 +67,13 @@ public class DataManager : MonoBehaviour
             {
                 if (!timer.isTimerActive()) timer.toggleTimer();
                 player.GetComponent<PlayerScript>().OnEnable();
+                player.GetComponent<Rigidbody2D>().WakeUp();
                 if ((Vector2)pauseScreen.position != pauseScreenAnchorPos + new Vector2(0, 1000f))
-                    {
-                        pauseScreen.position = Vector2.MoveTowards(pauseScreen.position, pauseScreenAnchorPos + new Vector2(0, 1000f), 10f);
-                        if (Vector2.Distance(pauseScreen.position, pauseScreenAnchorPos + new Vector2(0, 1000f)) <= 10f)
-                            pauseScreen.position = pauseScreenAnchorPos + new Vector2(0, 1000f);
-                    }
+                {
+                    pauseScreen.position = Vector2.MoveTowards(pauseScreen.position, pauseScreenAnchorPos + new Vector2(0, 1000f), 10f);
+                    if (Vector2.Distance(pauseScreen.position, pauseScreenAnchorPos + new Vector2(0, 1000f)) <= 10f)
+                        pauseScreen.position = pauseScreenAnchorPos + new Vector2(0, 1000f);
+                }
             }
         }
     }
