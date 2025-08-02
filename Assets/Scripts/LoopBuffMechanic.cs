@@ -24,7 +24,7 @@ public class LoopBuffMechanic : MonoBehaviour
             addBuffToList(i, i);
         }
         */
-        addBuffToList(5, 1, 0);
+        //addBuffToList(5, 1, 0);
         Reset();
     }
 

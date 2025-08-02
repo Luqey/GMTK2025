@@ -78,6 +78,7 @@ public class PlayerScript : MonoBehaviour
 
     public void OnEnable()
     {
+        Debug.Log("OnEnable");
         move = controls.Player.Move;
         move.Enable();
         jump = controls.Player.Jump;
@@ -159,9 +160,9 @@ public class PlayerScript : MonoBehaviour
             {
                 cannotStand = Physics2D.BoxCast(new Vector2(transform.position.x, transform.position.y) + new Vector2(0, 0.5f) + GetComponent<Collider2D>().offset, new Vector2(0.85f, 1), 0, Vector2.down, 0.1f, groundMask);
                 myAnim.SetBool("isSliding", true);
-                gameObject.GetComponent<CapsuleCollider2D>().size = new Vector2(2f, 1f);
+                gameObject.GetComponent<CapsuleCollider2D>().size = new Vector2(1.8f, 0.9f);
                 gameObject.GetComponent<CapsuleCollider2D>().direction = CapsuleDirection2D.Horizontal;
-                gameObject.GetComponent<CapsuleCollider2D>().offset = new Vector2(0, -1.05f);
+                gameObject.GetComponent<CapsuleCollider2D>().offset = new Vector2(0, -1.1f);
                 if (Mathf.Abs(xSpeed) < accelRate * 0.01f)
                 {
                     xSpeed = 0;
@@ -394,18 +395,14 @@ public class PlayerScript : MonoBehaviour
 
     public void startRewind()
     {
-        Debug.Log("dumbtest1");
         isRewinding = true;
         foreach (ghostPoint g in ghostRecording)
         {
             rewindRecording.Push(g);
         }
-        Debug.Log("dumbtest2");
         rewindCount = rewindRecording.Count;
         rigid.Sleep();
         myAnim.enabled = false;
-        isRewinding = false;
-        SceneManager.LoadScene(2);
     }
 
     public void invertControls(bool toggle)

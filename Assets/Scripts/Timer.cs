@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -6,12 +7,13 @@ public class Timer : MonoBehaviour
     private float time = 0f; //Time elapsed
     public float recordTime = 0f; //Fastest time that run
     public float previousTime = 0f; //Previous time score
-    private bool isActive = true; //Boolean for whether the timer is active.
+    private bool isActive = false; //Boolean for whether the timer is active.
     private bool isRewinding = false;
     private LoopBuffMechanic loop;
     public LifeSystem lives;
-    private PlayerScript player;
+    public PlayerScript player;
     [SerializeField] private TMP_Text timerText;
+    [SerializeField] private TMP_Text countdownText;
     public TMP_Text recordTimeText;
     public TMP_Text previousTimeText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,6 +22,9 @@ public class Timer : MonoBehaviour
         loop = FindFirstObjectByType<LoopBuffMechanic>();
         lives = FindFirstObjectByType<LifeSystem>();
         player = FindFirstObjectByType<PlayerScript>();
+        StartCoroutine("countdown");
+        player.OnDisable();
+        Debug.Log("OnDisable");
     }
 
     // Update is called once per frame
@@ -85,5 +90,20 @@ public class Timer : MonoBehaviour
         int minutes = ((int)timeVar) / 60 % 360;
         string min = (minutes < 10) ? "0" + minutes : minutes.ToString();
         return min + ":" + sec + ":" + ms;
+    }
+
+    private IEnumerator countdown()
+    {
+        countdownText.text = "3";
+        yield return new WaitForSeconds(0.5f);
+        countdownText.text = "2";
+        yield return new WaitForSeconds(0.5f);
+        countdownText.text = "1";
+        yield return new WaitForSeconds(0.5f);
+        countdownText.text = "GO!";
+        player.OnEnable();
+        isActive = true;
+        yield return new WaitForSeconds(0.5f);
+        countdownText.gameObject.SetActive(false);
     }
 }

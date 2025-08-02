@@ -13,7 +13,7 @@ public class AugmentSelectionManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        possibleAugments = new List<Augment>() { new Augment(0, 0, 100, "Speed I"), new Augment(1, 1, 30, "Speed II"), new Augment(2, 2, 8, "Spring Shoes"), new Augment(3, 2, 3, "Athletic") };
+        possibleAugments = new List<Augment>() { new Augment(0, 0, 100, "Speed I"), new Augment(1, 1, 30, "Speed II"), new Augment(2, 2, 8, "Spring Shoes"), new Augment(3, 2, 3, "Athletic"), new Augment(4, 2, 30, "Dash") };
         possibleNegatives = new List<Augment>() { new Augment(8, -1, 100, "test negative"), new Augment(8, -1, 30, "test negative (internally rare)"), new Augment(8, -1, 8, "test negative (internally legendary)"), new Augment(8, -1, 3, "test negative (internally absurdly rare)") };
         StartCoroutine(waitToRegen());
     }

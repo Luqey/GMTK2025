@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,6 +13,7 @@ public class DataManager : MonoBehaviour
     private Timer timer;
     [SerializeField] private RectTransform pauseScreen;
     [SerializeField] private GameObject endScreen;
+    [SerializeField] private GameObject countdownTimer;
     public Vector2 pauseScreenAnchorPos;
     public Vector2 initialPlayerPosition;
     //private InputAction menu;
@@ -46,7 +48,7 @@ public class DataManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!endScreen.activeSelf)
+        if (!endScreen.activeSelf || !countdownTimer.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Escape)) isPaused = !isPaused;
             if (isPaused)
@@ -62,14 +64,14 @@ public class DataManager : MonoBehaviour
             }
             else
             {
-                player.GetComponent<PlayerScript>().OnEnable();
                 if (!timer.isTimerActive()) timer.toggleTimer();
+                player.GetComponent<PlayerScript>().OnEnable();
                 if ((Vector2)pauseScreen.position != pauseScreenAnchorPos + new Vector2(0, 1000f))
-                {
-                    pauseScreen.position = Vector2.MoveTowards(pauseScreen.position, pauseScreenAnchorPos + new Vector2(0, 1000f), 10f);
-                    if (Vector2.Distance(pauseScreen.position, pauseScreenAnchorPos + new Vector2(0, 1000f)) <= 10f)
-                        pauseScreen.position = pauseScreenAnchorPos + new Vector2(0, 1000f);
-                }
+                    {
+                        pauseScreen.position = Vector2.MoveTowards(pauseScreen.position, pauseScreenAnchorPos + new Vector2(0, 1000f), 10f);
+                        if (Vector2.Distance(pauseScreen.position, pauseScreenAnchorPos + new Vector2(0, 1000f)) <= 10f)
+                            pauseScreen.position = pauseScreenAnchorPos + new Vector2(0, 1000f);
+                    }
             }
         }
     }
@@ -79,10 +81,8 @@ public class DataManager : MonoBehaviour
     }
     public void startRewind()
     {
-        Debug.Log("dumbtest0");
-        // player.GetComponent<PlayerScript>().startRewind();
-        // timer.startRewind();
-        resetLevel();
+        player.GetComponent<PlayerScript>().startRewind();
+        timer.startRewind();
     }
     public void resetLevel()
     {
