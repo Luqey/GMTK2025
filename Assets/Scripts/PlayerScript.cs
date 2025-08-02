@@ -312,7 +312,7 @@ public class PlayerScript : MonoBehaviour
                 myAnim.SetBool("isRunning", false);
             }
             rigid.linearVelocity = new Vector2(xSpeed + ((isDashing ? dashPower : 0) * (sprenderer.flipX ? -1 : 1)), rigid.linearVelocity.y);
-            if (frameCounter % 5 == 0 && !alreadyRecorded)
+            if (frameCounter % 5 == 0 && !alreadyRecorded && move.enabled)
             {
                 ghostRecording.Add(new ghostPoint(transform.position, transform.eulerAngles, transform.localScale, sprenderer.sprite, !sprenderer.flipX));
             }

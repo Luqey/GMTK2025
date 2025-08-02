@@ -80,6 +80,7 @@ public class DataManager : MonoBehaviour
     public void startRewind()
     {
         player.GetComponent<PlayerScript>().startRewind();
+        timer.startRewind();
     }
     public void resetLevel()
     {

@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
     public float recordTime = 0f; //Fastest time that run
     public float previousTime = 0f; //Previous time score
     private bool isActive = true; //Boolean for whether the timer is active.
+    private bool isRewinding = false;
     private LoopBuffMechanic loop;
     public LifeSystem lives;
     private PlayerScript player;
@@ -27,8 +28,12 @@ public class Timer : MonoBehaviour
         if (isActive)
         {
             time += Time.deltaTime;
-            timerText.text = updateTime(time);
         }
+        if (isRewinding)
+        {
+            time -= Time.deltaTime * 2.5f;
+        }
+        timerText.text = updateTime(time);
     }
 
     //Pauses or unpauses the timer
@@ -49,7 +54,10 @@ public class Timer : MonoBehaviour
         loop.Reset();
         player.recordGhost();
     }
-
+    public void startRewind()
+    {
+        isRewinding = true;
+    }
     //Records the time to the high score if it's faster, and adds it to the previous time
     public void recordTimeScore()
     {
