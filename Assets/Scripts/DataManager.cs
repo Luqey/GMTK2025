@@ -73,6 +73,10 @@ public class DataManager : MonoBehaviour
             }
         }
     }
+    public void restartRun()
+    {
+        SceneManager.LoadScene(0);
+    }
     public void resetLevel()
     {
         AugmentDataTransfer adt = GameObject.FindGameObjectWithTag("adt").GetComponent<AugmentDataTransfer>();
