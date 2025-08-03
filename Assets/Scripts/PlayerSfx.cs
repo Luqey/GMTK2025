@@ -6,6 +6,7 @@ public class PlayerSfx : MonoBehaviour
     [SerializeField] private AudioClip[] footstepSfx;
     [SerializeField] private AudioClip[] jumpSfx;
     [SerializeField] private AudioClip[] landingSfx;
+    [SerializeField] private AudioClip[] slideSfx;
     [SerializeField] private AudioSource audioSource1;
     [SerializeField] private AudioSource audioSource2;
 
@@ -30,5 +31,12 @@ public class PlayerSfx : MonoBehaviour
         int rand = RandomNumberGenerator.GetInt32(0, landingSfx.Length);
         audioSource2.clip = landingSfx[rand];
         audioSource2.Play();
+    }
+    public void playSlide()
+    {
+        if (slideSfx.Length == 0) return;
+        int rand = RandomNumberGenerator.GetInt32(0, slideSfx.Length);
+        audioSource1.clip = slideSfx[rand];
+        audioSource1.Play();
     }
 }

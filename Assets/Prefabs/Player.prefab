@@ -116,6 +116,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  canMove: 0
   slideDecelerationRate: 0.001
   dashPower: 20
   isRewinding: 0
@@ -278,12 +279,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0f12e3cfbcdda1444bc3f7f8d1ce2c64, type: 3}
   - {fileID: 8300000, guid: 8e0d7e38e738e1d4387c5af0bdfc6f9a, type: 3}
   landingSfx:
-  - {fileID: 8300000, guid: 65763f6f6ef23b746b20144eace72249, type: 3}
-  - {fileID: 8300000, guid: 08fa0ca9f72e88f458e55d00d5600518, type: 3}
-  - {fileID: 8300000, guid: e325bff6e61070e4eab27d2c9ed0faa1, type: 3}
-  - {fileID: 8300000, guid: 13b8c02833c7656459b2eb82ee6d4ded, type: 3}
-  - {fileID: 8300000, guid: 888a50207a8e89f4a9ee17b080e6ae71, type: 3}
-  - {fileID: 8300000, guid: 7062c81f4128dc043a52191f437e7337, type: 3}
+  - {fileID: 8300000, guid: 6f057e3a8e1ef58448e54d348cab6d39, type: 3}
+  - {fileID: 8300000, guid: c724963f81a2f79469394a787be60bc7, type: 3}
+  - {fileID: 8300000, guid: 9c8038cbed7e38349ac8f3649bedde9b, type: 3}
+  - {fileID: 8300000, guid: 322518780edaa3c4ab96055be7be88bd, type: 3}
+  - {fileID: 8300000, guid: 32acfae7350801449952b7e1b9bd15ea, type: 3}
+  - {fileID: 8300000, guid: 3055f888a93654147aefc4daedaee117, type: 3}
+  - {fileID: 8300000, guid: 4dc3507ef6c923e46b8891179e59f887, type: 3}
+  slideSfx:
+  - {fileID: 8300000, guid: ceb3d7b4501eb6843b42a4028a5cc2c0, type: 3}
+  - {fileID: 8300000, guid: ef8d4273e1724bf4fbbf11c7cc3a4d94, type: 3}
+  - {fileID: 8300000, guid: ad5fdb25eef830b4bb90d807c62193ae, type: 3}
+  - {fileID: 8300000, guid: 95a9185fff4490943b233ec4489b7749, type: 3}
+  - {fileID: 8300000, guid: c25bf01ad1fdff74abe1cc9d63bb57b1, type: 3}
+  - {fileID: 8300000, guid: 3abc06f7cb6a5854887a7c010bb87166, type: 3}
   audioSource1: {fileID: 449477512284138192}
   audioSource2: {fileID: 8016629709193843186}
 --- !u!82 &449477512284138192

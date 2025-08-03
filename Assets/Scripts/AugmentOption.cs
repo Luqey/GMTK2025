@@ -65,6 +65,7 @@ public class AugmentOption : MonoBehaviour
     {
         if (rarity == -1)
         {
+            AudioManager.instance.playAugmentNeg();
             slotForNegative.updateNegative(id, description);
             gameObject.SetActive(false);
             GameObject.FindGameObjectWithTag("adt").GetComponent<AugmentDataTransfer>().overrideSceneBuffs = true;

@@ -56,6 +56,7 @@ public class DragAndDropAugment : MonoBehaviour
                 {
                     inHand = false;
                     hit.gameObject.GetComponent<AugmentSlot>().Populate(rarity, id, description);
+                    AudioManager.instance.playAugmentPos();
                     StartCoroutine(disappear());
                 }
             }

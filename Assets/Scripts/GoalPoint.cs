@@ -5,10 +5,12 @@ public class GoalPoint : MonoBehaviour
     private Timer timer;
     [SerializeField] private GameObject endScreen;
     [SerializeField] private GameObject gameOverScreen;
+    private AudioSource audioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         timer = FindFirstObjectByType<Timer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -16,11 +18,9 @@ public class GoalPoint : MonoBehaviour
         if (collision.CompareTag("Player") && (endScreen == null || !endScreen.activeSelf) && (gameOverScreen == null || !gameOverScreen.activeSelf))
         {
             //End Level
-            Debug.Log("dumbtest-1");
             collision.gameObject.GetComponent<PlayerScript>().OnDisable();
             if (timer.isTimerActive()) timer.toggleTimer();
             timer.recordTimeScore();
-            Debug.Log("dumbtest-0.5");
             if (gameOverScreen != null && collision.GetComponent<LifeSystem>().getLives() <= 0)
             {
                 gameOverScreen.SetActive(true);
@@ -28,9 +28,12 @@ public class GoalPoint : MonoBehaviour
             else if (endScreen != null)
             {
                 endScreen.SetActive(true);
-                Debug.Log("dumbtest-0.25");
+                playSfx();
             }
-            Debug.Log("dumbtest-0.1");
         }
+    }
+    void playSfx()
+    {
+        if (audioSource.clip != null) audioSource.Play();
     }
 }

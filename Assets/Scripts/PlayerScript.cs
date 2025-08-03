@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-
 public class PlayerScript : MonoBehaviour
 {
     public InputSystem_Actions controls;

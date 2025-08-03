@@ -1,9 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Threading;
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class DataManager : MonoBehaviour
@@ -16,8 +12,6 @@ public class DataManager : MonoBehaviour
     [SerializeField] private GameObject countdownTimer;
     public Vector2 pauseScreenAnchorPos;
     public Vector2 initialPlayerPosition;
-    //private InputAction menu;
-    //InputSystem_Actions controls;
     public LoopBuffMechanic lbm;
     public bool isPaused = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,7 +25,6 @@ public class DataManager : MonoBehaviour
         {
             instance = this;
         }
-        //controls = new InputSystem_Actions();
     }
 
     void Start()
@@ -41,8 +34,6 @@ public class DataManager : MonoBehaviour
         timer = FindFirstObjectByType<Timer>();
         pauseScreenAnchorPos = pauseScreen.position;
         pauseScreen.position += new Vector3(0, 1000f, 0);
-        //menu = controls.Player.Menu;
-        //menu.Enable();
     }
 
     // Update is called once per frame
@@ -111,11 +102,6 @@ public class DataManager : MonoBehaviour
         Debug.Log(timer.previousTime);
         adt.lives = timer.lives.getLives();
         SceneManager.LoadScene(2);
-        // player.transform.position = initialPlayerPosition;
-        // player.GetComponent<PlayerScript>().OnEnable();
-        // timer.resetTimer();
-        // if (!timer.isTimerActive()) timer.toggleTimer();
-        // endScreen.SetActive(false);
     }
 
     public void unPause()

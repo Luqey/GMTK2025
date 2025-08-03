@@ -1721,7 +1721,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.9
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1819,7 +1819,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BGM:
   - {fileID: 8300000, guid: 7b7ca18a7d9d10344b434848d0327ce0, type: 3}
-  menuSFX: []
+  menuClickSFX:
+  - {fileID: 8300000, guid: d6d6eda88b9f1224788530745279eb74, type: 3}
+  - {fileID: 8300000, guid: 4a45745644425ea4794973558029597a, type: 3}
+  - {fileID: 8300000, guid: 20b9279432819f0438fc67491dd8bd16, type: 3}
+  - {fileID: 8300000, guid: 10b8df6dd6113b149956367531ed049a, type: 3}
+  - {fileID: 8300000, guid: c718dd2c68570dc4e9230ac08232ec0e, type: 3}
+  - {fileID: 8300000, guid: 51d314f557484b946b2196df42296ec8, type: 3}
+  menuStartSFX:
+  - {fileID: 8300000, guid: 00eabf6a2fcd0c946894c5cbc4e04173, type: 3}
+  - {fileID: 8300000, guid: f135d9d5bf7224449a7ef477b5f57ed1, type: 3}
+  - {fileID: 8300000, guid: 9c81b3ab1b381684195b6f615a8c6af7, type: 3}
+  - {fileID: 8300000, guid: 79ed524d179dbd743936b8fb44c573f8, type: 3}
+  - {fileID: 8300000, guid: af6ba2ce18adbe045a55980317792a7a, type: 3}
+  augmentPosSFX:
+  - {fileID: 8300000, guid: ecaa472ab0236e546b1ff07682e9fefd, type: 3}
+  - {fileID: 8300000, guid: 5490aefde238de440bcc406e0137a6ae, type: 3}
+  - {fileID: 8300000, guid: f7d2669f5d274c24b8b600c3988087a9, type: 3}
+  - {fileID: 8300000, guid: f94a9f696dfd4ca48b09964469455dbe, type: 3}
+  augmentNegSFX:
+  - {fileID: 8300000, guid: 03df1ca8367df944db1c4aa9f331566e, type: 3}
+  - {fileID: 8300000, guid: bb0ac30629ffda04d8b91f8c490912ac, type: 3}
+  - {fileID: 8300000, guid: 242fe3f2ee4a32b4cb0797385c23be53, type: 3}
+  - {fileID: 8300000, guid: 56a87210a21a30c4ca99ab0b6dc93a0c, type: 3}
   bgmAudioSource: {fileID: 127157136}
   menuSfxAudioSource: {fileID: 127157137}
 --- !u!4 &127157139
@@ -2206,6 +2228,7 @@ GameObject:
   - component: {fileID: 213095606}
   - component: {fileID: 213095605}
   - component: {fileID: 213095604}
+  - component: {fileID: 213095607}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -2275,7 +2298,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 213095605}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 213095607}
+        m_TargetAssemblyTypeName: menuSfxScript, Assembly-CSharp
+        m_MethodName: playStartSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &213095605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2314,6 +2349,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213095602}
   m_CullTransparentMesh: 1
+--- !u!114 &213095607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213095602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd60406edb2f198488f0fd2d2adaf221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &217663131
 GameObject:
   m_ObjectHideFlags: 0
@@ -3505,6 +3552,7 @@ GameObject:
   - component: {fileID: 276202781}
   - component: {fileID: 276202780}
   - component: {fileID: 276202779}
+  - component: {fileID: 276202783}
   m_Layer: 0
   m_Name: Goal
   m_TagString: Untagged
@@ -3642,6 +3690,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &276202783
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276202778}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9ae38c8c5aef1474ba4a5480e08f929c, type: 3}
+  m_Resource: {fileID: 8300000, guid: 9ae38c8c5aef1474ba4a5480e08f929c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &280343376
 GameObject:
   m_ObjectHideFlags: 0
@@ -425768,6 +425913,7 @@ GameObject:
   - component: {fileID: 335381955}
   - component: {fileID: 335381954}
   - component: {fileID: 335381953}
+  - component: {fileID: 335381956}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -425850,6 +425996,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 335381956}
+        m_TargetAssemblyTypeName: menuSfxScript, Assembly-CSharp
+        m_MethodName: playStartSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &335381954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425888,6 +426046,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335381951}
   m_CullTransparentMesh: 1
+--- !u!114 &335381956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335381951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd60406edb2f198488f0fd2d2adaf221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &342615171
 GameObject:
   m_ObjectHideFlags: 0
@@ -428648,7 +428818,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
+  m_Color: {r: 0.9607844, g: 0.8941177, b: 0.57254905, a: 0.78431374}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -428667,7 +428837,7 @@ Transform:
   m_GameObject: {fileID: 601657731}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.41, y: 0.37, z: 0}
+  m_LocalPosition: {x: -56.6, y: 1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -431407,7 +431577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &975584338
 RectTransform:
   m_ObjectHideFlags: 0
@@ -433458,6 +433628,7 @@ GameObject:
   - component: {fileID: 1323509203}
   - component: {fileID: 1323509202}
   - component: {fileID: 1323509201}
+  - component: {fileID: 1323509204}
   m_Layer: 5
   m_Name: Close
   m_TagString: Untagged
@@ -433540,6 +433711,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1323509204}
+        m_TargetAssemblyTypeName: menuSfxScript, Assembly-CSharp
+        m_MethodName: playClickSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1323509202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433578,6 +433761,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323509199}
   m_CullTransparentMesh: 1
+--- !u!114 &1323509204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323509199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd60406edb2f198488f0fd2d2adaf221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1337132936
 GameObject:
   m_ObjectHideFlags: 0
