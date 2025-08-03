@@ -121,6 +121,7 @@ MonoBehaviour:
   dashPower: 20
   isRewinding: 0
   ghost: {fileID: 0}
+  dashVfx: {fileID: 5906009224540607354, guid: 0c950630ce965fd48a15ddf8a542a116, type: 3}
   myAnim: {fileID: 0}
 --- !u!114 &7649096910102436381
 MonoBehaviour:

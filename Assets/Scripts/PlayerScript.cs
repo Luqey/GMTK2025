@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class PlayerScript : MonoBehaviour
 {
     public InputSystem_Actions controls;
@@ -37,7 +38,7 @@ public class PlayerScript : MonoBehaviour
     private bool isCrouched = false;
     private bool cannotStand = false; //used for checking if the player can stand up
     [Tooltip("Multiplies with acceleration rate, keep it very small")]
-    [SerializeField] float slideDecelerationRate = 0.001f; 
+    [SerializeField] float slideDecelerationRate = 0.001f;
     [SerializeField] private float dashPower = 20f;
     private bool isDashing = false;
     private int jumpCount = 1;
@@ -55,6 +56,7 @@ public class PlayerScript : MonoBehaviour
     private Stack<ghostPoint> rewindRecording;
     private ghostPoint rewindPoint;
     public GameObject ghost;
+    [SerializeField] private GameObject dashVfx;
     bool alreadyRecorded;
 
     SpriteRenderer sprenderer;
@@ -365,6 +367,8 @@ public class PlayerScript : MonoBehaviour
     public void setDash(bool dash)
     {
         isDashing = dash;
+        if (dash) InvokeRepeating("spawnDashVfx", 0.1f, 0.1f);
+        else CancelInvoke("spawnDashVfx");
     }
     public void addJump(int num)
     {
@@ -391,9 +395,28 @@ public class PlayerScript : MonoBehaviour
         rigid.Sleep();
         myAnim.enabled = false;
     }
+    private void spawnDashVfx()
+    {
+        if (dashVfx == null) return;
+        GameObject dashImage = Instantiate(dashVfx, transform.position, transform.rotation);
+        dashImage.GetComponent<SpriteRenderer>().sprite = sprenderer.sprite;
+        dashImage.GetComponent<SpriteRenderer>().flipX = sprenderer.flipX;
+        StartCoroutine(fadeOutVfx(dashImage.GetComponent<SpriteRenderer>()));
+    }
 
     public void invertControls(bool toggle)
     {
         invert = toggle;
+    }
+    private System.Collections.IEnumerator fadeOutVfx(SpriteRenderer vfx)
+    {
+        float alpha = vfx.color.a;
+        while (alpha > 0)
+        {
+            alpha -= 0.1f;
+            vfx.color = new Color(vfx.color.r, vfx.color.g, vfx.color.b, alpha);
+            yield return new WaitForSeconds(0.1f);
+        }
+        Destroy(vfx.gameObject);
     }
 }
