@@ -12,6 +12,7 @@ public class AugmentDataTransfer : MonoBehaviour
     //public float previousTime;
     public bool overrideSceneBuffs;
     public int lives;
+    public bool hasFailed = false;
     void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("adt");

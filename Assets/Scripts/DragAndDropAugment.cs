@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -55,7 +54,7 @@ public class DragAndDropAugment : MonoBehaviour
                 if (hit && hit.gameObject.tag == "augment slot")
                 {
                     inHand = false;
-                    hit.gameObject.GetComponent<AugmentSlot>().Populate(rarity, id, description);
+                    hit.gameObject.GetComponent<AugmentSlot>().Populate(rarity, id, description, FindFirstObjectByType<AugmentDataTransfer>().hasFailed);
                     AudioManager.instance.playAugmentPos();
                     StartCoroutine(disappear());
                 }

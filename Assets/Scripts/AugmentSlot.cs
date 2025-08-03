@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Xml;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AugmentSlot : MonoBehaviour
 {
@@ -36,25 +36,23 @@ public class AugmentSlot : MonoBehaviour
         else
         {
             negativeText.text = negativeDescription;
+            negativeText.color = Color.red;
         }
     }
-    public void Populate(int r, int i, string d)
+    public void Populate(int r, int i, string d, bool isApplying)
     {
         if (i == -1)
         {
             id = -1;
             return;
         }
-        Debug.Log(id);
-        if (id == -1)
-        {
-            AugmentDataTransfer adt = GameObject.FindGameObjectWithTag("adt").GetComponent<AugmentDataTransfer>();
-            adt.ids[index] = i;
-            adt.rarityDisps[index] = r;
-        }
+        AugmentDataTransfer adt = GameObject.FindGameObjectWithTag("adt").GetComponent<AugmentDataTransfer>();
+        adt.ids[index] = i;
+        adt.rarityDisps[index] = r;
         rarity = r;
         id = i;
         description = d;
+        Debug.Log(adt.negativeids[index]);
         rarityDisplay.SetActive(true);
         rarityDisplay.GetComponent<SpriteRenderer>().sprite = rarityLabels[rarity];
         rarityDisplay2.GetComponent<SpriteRenderer>().sprite = rarityLabels2[rarity];
@@ -62,7 +60,15 @@ public class AugmentSlot : MonoBehaviour
         popup.SetActive(true);
         popup.GetComponent<AugmentPopup>().canLowerDone = false;
         popup.GetComponent<AugmentPopup>().StartCoroutine(popup.GetComponent<AugmentPopup>().waitCanLowerDone());
-        asm.regenerateNegativeOptions(this);
+        if (isApplying)
+        {
+            adt.negativeids[index] = -1;
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            asm.regenerateNegativeOptions(this);
+        }
         StartCoroutine(waitToLower());
     }
 

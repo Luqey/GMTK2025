@@ -35,7 +35,10 @@ public class AugmentOption : MonoBehaviour
         if (rarity >= 0)
             rarityDisplay.GetComponent<SpriteRenderer>().sprite = rarityLabels[rarity];
         else
+        {
             rarityDisplay.SetActive(false);
+            DescriptionBox.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().color = Color.red;
+        }
         DescriptionBox.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = description;
         transform.localScale = new Vector3(16, 16, 16);
     }

@@ -16,6 +16,6 @@ public class LoopProgress : MonoBehaviour
     void Update()
     {
         if (lbm.duration > 0 && !lbm.player.isRewinding && lbm.player.canMove && lbm.time <= lbm.duration)
-            GetComponent<Image>().sprite = sprites[(int)((lbm.time / lbm.duration) * 40)];
+            GetComponent<Image>().sprite = sprites[(int)((lbm.time / lbm.duration) * sprites.Count)];
     }
 }

@@ -104,6 +104,7 @@ public class DataManager : MonoBehaviour
         adt.recordTime = timer.recordTime;
         //Debug.Log(timer.previousTime);
         adt.lives = timer.lives.getLives();
+        adt.hasFailed = failed;
         SceneManager.LoadScene(2);
     }
 

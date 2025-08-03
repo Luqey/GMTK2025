@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AugmentLoopUIManager : MonoBehaviour
@@ -31,7 +30,7 @@ public class AugmentLoopUIManager : MonoBehaviour
             Debug.Log(aslots.Count + "," + adt.rarityDisps.Count + "," + adt.ids.Count + "," + fileLines.Count);
             if (adt.ids[i] != -1)
             {
-                aslots[i].Populate(adt.rarityDisps[i], adt.ids[i], fileLines[adt.ids[i]].Substring(0, fileLines[adt.ids[i]].IndexOf('|')));
+                aslots[i].Populate(adt.rarityDisps[i], adt.ids[i], fileLines[adt.ids[i]].Substring(0, fileLines[adt.ids[i]].IndexOf('|')), false);
                 aslots[i].negativeId = adt.negativeids[i];
                 Debug.Log(adt.negativeids[i]);
                 if(adt.negativeids[i] != -1)
@@ -39,7 +38,7 @@ public class AugmentLoopUIManager : MonoBehaviour
             }
             else
             {
-                aslots[i].Populate(-2, -1, "null");
+                aslots[i].Populate(-2, -1, "null",false);
             }
         }
     }
