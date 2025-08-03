@@ -49,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BGM:
   - {fileID: 8300000, guid: 7b7ca18a7d9d10344b434848d0327ce0, type: 3}
+  - {fileID: 8300000, guid: 1dd6a069fd1b80a4b82127b2cda0df5d, type: 3}
+  - {fileID: 8300000, guid: 5896e1aa779fda747bcab89a77a87e72, type: 3}
   menuClickSFX:
   - {fileID: 8300000, guid: d6d6eda88b9f1224788530745279eb74, type: 3}
   - {fileID: 8300000, guid: 4a45745644425ea4794973558029597a, type: 3}
@@ -73,7 +75,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 242fe3f2ee4a32b4cb0797385c23be53, type: 3}
   - {fileID: 8300000, guid: 56a87210a21a30c4ca99ab0b6dc93a0c, type: 3}
   bgmAudioSource: {fileID: 6194886568539186543}
+  bgmSubAudioSource: {fileID: 5900893896772978579}
+  isUnderground: 0
   menuSfxAudioSource: {fileID: 6649295300464296516}
+  sfxVolume: 0.5
 --- !u!82 &6194886568539186543
 AudioSource:
   m_ObjectHideFlags: 0
@@ -184,7 +189,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.9
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -278,12 +283,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7fe4bfadeadf93b4fa81383ee47c0293, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7fe4bfadeadf93b4fa81383ee47c0293, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0

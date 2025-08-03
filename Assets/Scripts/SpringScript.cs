@@ -15,6 +15,10 @@ public class SpringScript : MonoBehaviour
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
     }
+    void Update()
+    {
+        audioSource.volume = AudioManager.instance.updateVolume();
+    }
 
     void OnTriggerStay2D(Collider2D collider)
     {

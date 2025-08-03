@@ -22,6 +22,7 @@ public class UndergroundCheck : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             StartOffsetTransition(undergroundOffset);
+            AudioManager.instance.isUnderground = true;
         }
     }
 
@@ -30,6 +31,7 @@ public class UndergroundCheck : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             StartOffsetTransition(upperOffset);
+            AudioManager.instance.isUnderground = false;
         }
     }
 

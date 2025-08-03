@@ -10,6 +10,12 @@ public class PlayerSfx : MonoBehaviour
     [SerializeField] private AudioSource audioSource1;
     [SerializeField] private AudioSource audioSource2;
 
+    void Update()
+    {
+        audioSource1.volume = AudioManager.instance.updateVolume();
+        audioSource2.volume = AudioManager.instance.updateVolume();
+    }
+
     public void playFootstep()
     {
         if (footstepSfx.Length == 0) return;

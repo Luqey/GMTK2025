@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Security.Cryptography;
+using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
@@ -10,7 +11,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] augmentPosSFX;
     [SerializeField] private AudioClip[] augmentNegSFX;
     public AudioSource bgmAudioSource;
+    public AudioSource bgmSubAudioSource;
+    public bool isUnderground;
     [SerializeField] private AudioSource menuSfxAudioSource;
+    public float sfxVolume;
     void Awake()
     {
         if (instance != null && instance != this)
@@ -26,18 +30,41 @@ public class AudioManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        sfxVolume = menuSfxAudioSource.volume;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (SceneManager.GetActiveScene().buildIndex == 1 && bgmAudioSource.clip != BGM[1] && bgmAudioSource.clip != BGM[2])
+        {
+            playBGM(1,false);
+        } else if (bgmAudioSource.clip == BGM[1] && !bgmAudioSource.isPlaying)
+        {
+            playBGM(2, true);
+            bgmSubAudioSource.Play();
+        } else if (SceneManager.GetActiveScene().buildIndex == 0 && bgmAudioSource.clip != BGM[0])
+        {
+            playBGM(1,true);
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 1 && bgmAudioSource.clip == BGM[2] && isUnderground)
+        {
+            bgmAudioSource.mute = true;
+            bgmSubAudioSource.mute = false;
+        }
+        else
+        {
+            bgmAudioSource.mute = false;
+            bgmSubAudioSource.mute = true;
+        }
+        bgmSubAudioSource.volume = bgmAudioSource.volume;
+        menuSfxAudioSource.volume = sfxVolume;
     }
 
-    public void playBGM(int id)
+    public void playBGM(int id, bool loop)
     {
         bgmAudioSource.clip = BGM[id];
+        bgmAudioSource.loop = loop;
         bgmAudioSource.Play();
     }
     public void playMenuClick()
@@ -67,5 +94,10 @@ public class AudioManager : MonoBehaviour
         int rand = RandomNumberGenerator.GetInt32(0, augmentNegSFX.Length);
         menuSfxAudioSource.clip = augmentNegSFX[rand];
         menuSfxAudioSource.Play();
+    }
+
+    public float updateVolume()
+    {
+        return sfxVolume;
     }
 }
