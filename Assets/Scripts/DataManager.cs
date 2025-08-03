@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DataManager : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class DataManager : MonoBehaviour
     [SerializeField] private RectTransform pauseScreen;
     [SerializeField] private GameObject endScreen;
     [SerializeField] private GameObject countdownTimer;
-    [SerializeField] private TMP_Text rewindText;
+    public TMP_Text rewindText;
+    [SerializeField] private Sprite rewindSpr;
     public Vector2 pauseScreenAnchorPos;
     public Vector2 initialPlayerPosition;
     public LoopBuffMechanic lbm;
@@ -42,7 +44,7 @@ public class DataManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!endScreen.activeSelf && !countdownTimer.activeSelf && !failed)
+        if (!endScreen.activeSelf && !rewindText.gameObject.activeSelf && !countdownTimer.activeSelf && !failed)
         {
             if (Input.GetKeyDown(KeyCode.Escape)) isPaused = !isPaused;
             if (isPaused)
@@ -116,6 +118,9 @@ public class DataManager : MonoBehaviour
     public System.Collections.IEnumerator initiateRewindText()
     {
         rewindText.gameObject.SetActive(true);
+        Image sprite = rewindText.transform.GetChild(0).GetComponent<Image>();
+        sprite.sprite = rewindSpr;
+        endScreen.gameObject.SetActive(false);
         int i = 0;
         while (true)
         {
@@ -135,6 +140,7 @@ public class DataManager : MonoBehaviour
                     break;
             }
             i++;
+            sprite.enabled = !sprite.enabled;
             yield return new WaitForSeconds(0.5f);
         }
     }

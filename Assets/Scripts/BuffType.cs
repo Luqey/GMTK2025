@@ -29,12 +29,12 @@ public class BuffType : MonoBehaviour
         sprite = GetComponent<Image>();
     }
     //apply buff to the player
-    public void applyBuff(PlayerScript player, float interval)
+    public void applyBuff(PlayerScript player, float interval, Sprite[] spr)
     {
         isActive = true;
         Debug.Log(buffName + " activated!");
         if(rarity != -1)
-            sprite.color = Color.yellow;
+            sprite.sprite = spr[rarity];
         player.setMultipliers(speedMultiplier, jumpMultiplier, accelMultiplier, gravityMultiplier);
         if (intervalOnly) StartCoroutine(intervalBuffTimer(player, interval));
         if (dash) StartCoroutine(applyDash(player));

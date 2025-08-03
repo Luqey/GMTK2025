@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LoopBuffMechanic : MonoBehaviour
@@ -12,7 +14,8 @@ public class LoopBuffMechanic : MonoBehaviour
     private int buffId = 0;
     [SerializeField] public List<BuffType> buffs = new List<BuffType>(); //List of different types of buffs
     [SerializeField] public List<BuffType> negatives = new List<BuffType>(); //List of different types of negative buffs
-
+    [SerializeField] private TMP_Text intervalText;
+    [SerializeField] private Sprite[] augmentSprites;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +39,7 @@ public class LoopBuffMechanic : MonoBehaviour
             time += Time.deltaTime;
             if (buffId >= 3)
             {
+                intervalText.text = "Time Until Next:\n" + (int)(intervals * (buffId + 2) - time)  + " sec";
                 if (time >= (intervals * (buffId + 2)) && buffId != numBuffs)
                 {
                     activateBuff(buffId);
@@ -44,6 +48,7 @@ public class LoopBuffMechanic : MonoBehaviour
             }
             else
             {
+                 intervalText.text = "Time Until Next:\n" + (int)(intervals * (buffId + 1) - time)  + " sec";
                 if (time >= (intervals * (buffId + 1)) && buffId != numBuffs)
                 {
                     activateBuff(buffId);
@@ -57,11 +62,11 @@ public class LoopBuffMechanic : MonoBehaviour
     {
         if (id == 3)
         {
-            if (buffs[id] != null) buffs[id].applyBuff(player, intervals * 2);
-            if (negatives[id] != null) negatives[id].applyBuff(player, intervals * 2);
+            if (buffs[id] != null) buffs[id].applyBuff(player, intervals * 2, augmentSprites);
+            if (negatives[id] != null) negatives[id].applyBuff(player, intervals * 2,augmentSprites);
         }
-        if (buffs[id] != null) buffs[id].applyBuff(player, intervals);
-        if (negatives[id] != null) negatives[id].applyBuff(player, intervals);
+        if (buffs[id] != null) buffs[id].applyBuff(player, intervals,augmentSprites);
+        if (negatives[id] != null) negatives[id].applyBuff(player, intervals,augmentSprites);
     }
     //adds an augment from the list to the ones in play
     public void addBuffToList(int id, int r, int position)

@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
@@ -11,6 +12,8 @@ public class Timer : MonoBehaviour
     private LoopBuffMechanic loop;
     public LifeSystem lives;
     public PlayerScript player;
+    [SerializeField] private Sprite pauseSprite;
+    [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text countdownText;
     public TMP_Text recordTimeText;
@@ -30,7 +33,16 @@ public class Timer : MonoBehaviour
         if (isActive)
         {
             time += Time.deltaTime;
-            if (time >= recordTime && recordTime != 0) StartCoroutine(failPause());
+            if (time >= recordTime && recordTime != 0)
+            {
+                lives.changeLives(-1);
+                isActive = false;
+                player.OnDisable();
+                player.gameObject.GetComponent<Rigidbody2D>().Sleep();
+                player.gameObject.GetComponent<Animator>().enabled = false;
+                if (lives.getLives() != 0) StartCoroutine(failPause());
+                else gameOverScreen.SetActive(true);
+            }
         }
         if (isRewinding)
         {
@@ -103,14 +115,11 @@ public class Timer : MonoBehaviour
     }
     private IEnumerator failPause()
     {
-        lives.changeLives(-1);
-        isActive = false;
-        player.OnDisable();
-        player.gameObject.GetComponent<Rigidbody2D>().Sleep();
         DataManager.instance.failed = true;
-        //Pause vfx
+        DataManager.instance.rewindText.gameObject.SetActive(true);
+        DataManager.instance.rewindText.text = "Loop Over!";
+        DataManager.instance.rewindText.gameObject.transform.GetChild(0).GetComponent<Image>().sprite = pauseSprite;
         yield return new WaitForSeconds(2f);
-        //Remove Pause
         DataManager.instance.startRewind();
     }
 }

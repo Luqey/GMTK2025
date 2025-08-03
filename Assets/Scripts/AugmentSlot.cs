@@ -63,6 +63,7 @@ public class AugmentSlot : MonoBehaviour
         if (isApplying)
         {
             adt.negativeids[index] = -1;
+            adt.overrideSceneBuffs = true;
             SceneManager.LoadScene(1);
         }
         else
