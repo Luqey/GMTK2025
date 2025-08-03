@@ -16,7 +16,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text countdownText;
-    public TMP_Text recordTimeText;
+    public TMP_Text[] recordTimeText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -40,8 +40,15 @@ public class Timer : MonoBehaviour
                 player.OnDisable();
                 player.gameObject.GetComponent<Rigidbody2D>().Sleep();
                 player.gameObject.GetComponent<Animator>().enabled = false;
-                if (lives.getLives() != 0) StartCoroutine(failPause());
-                else gameOverScreen.SetActive(true);
+                if (lives.getLives() > 0)
+                {
+                    Debug.Log("fail!");
+                    StartCoroutine(failPause());
+                }
+                else
+                {
+                    DataManager.instance.gameOver = true;
+                }
             }
         }
         if (isRewinding)
@@ -79,7 +86,8 @@ public class Timer : MonoBehaviour
         if (time < recordTime || recordTime == 0)
         {
             recordTime = time;
-            recordTimeText.text = updateTime(recordTime);
+            recordTimeText[0].text = updateTime(recordTime);
+            recordTimeText[1].text = updateTime(recordTime);
         }
         else
         {

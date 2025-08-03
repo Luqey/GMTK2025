@@ -53,7 +53,8 @@ public class AugmentDataTransfer : MonoBehaviour
             //lbm.timer.previousTime = previousTime;
             //lbm.timer.previousTimeText.text = lbm.timer.updateTime(previousTime);
             lbm.timer.recordTime = recordTime;
-            lbm.timer.recordTimeText.text = lbm.timer.updateTime(recordTime);
+            lbm.timer.recordTimeText[0].text = lbm.timer.updateTime(recordTime);
+            lbm.timer.recordTimeText[1].text = lbm.timer.updateTime(recordTime);
             lbm.timer.lives.setLives(lives);
             lbm.setDuration(recordTime);
             overrideSceneBuffs = false;

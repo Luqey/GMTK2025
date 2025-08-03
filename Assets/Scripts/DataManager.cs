@@ -16,8 +16,10 @@ public class DataManager : MonoBehaviour
     [SerializeField] private Sprite rewindSpr;
     public Vector2 pauseScreenAnchorPos;
     public Vector2 initialPlayerPosition;
+    [SerializeField] RectTransform gameOverScreen;
     public LoopBuffMechanic lbm;
     public bool failed = false;
+    public bool gameOver;
     public bool isPaused = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -70,6 +72,15 @@ public class DataManager : MonoBehaviour
                     if (Vector2.Distance(pauseScreen.position, pauseScreenAnchorPos + new Vector2(0, 1000f)) <= 10f)
                         pauseScreen.position = pauseScreenAnchorPos + new Vector2(0, 1000f);
                 }
+            }
+        }
+        if (gameOver)
+        {
+            if ((Vector2)gameOverScreen.position != pauseScreenAnchorPos)
+            {
+                gameOverScreen.position = Vector2.MoveTowards(gameOverScreen.position, pauseScreenAnchorPos, 10f);
+                if (Vector2.Distance(gameOverScreen.position, pauseScreenAnchorPos) <= 10f)
+                   gameOverScreen.position = pauseScreenAnchorPos;
             }
         }
     }
@@ -148,5 +159,15 @@ public class DataManager : MonoBehaviour
     public void quitToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+    public void endLevel()
+    {
+        endScreen.SetActive(true);
+        StartCoroutine(endPause());
+    }
+    private System.Collections.IEnumerator endPause()
+    {
+        yield return new WaitForSeconds(2f);
+        startRewind();
     }
 }
