@@ -108,4 +108,9 @@ public class DataManager : MonoBehaviour
     {
         isPaused = false;
     }
+
+    public void quitToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

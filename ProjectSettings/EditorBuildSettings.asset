@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Cherry's Test Chamber.unity
-    guid: 2e80b49068cd82248a9d0e4f2a26ed0e
+    path: Assets/Scenes/Main Menu.unity
+    guid: 4443174f9cc687e41a3954dae5d3c09d
   - enabled: 1
     path: Assets/Scenes/Gameplay Scene.unity
     guid: 9846db50974c932429ac9411ba7adc6d
