@@ -1,0 +1,405 @@
+fileFormatVersion: 2
+guid: 0351bdf96274c8a4a9a285298b0480c4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6048777639501094353
+    second: CreditsStuff_0
+  - first:
+      213: 1333198904948471548
+    second: CreditsStuff_1
+  - first:
+      213: -4990789913968113270
+    second: CreditsStuff_2
+  - first:
+      213: 7096072075269418835
+    second: CreditsStuff_3
+  - first:
+      213: 4153232464046083793
+    second: CreditsStuff_4
+  - first:
+      213: -849877408729729310
+    second: CreditsStuff_5
+  - first:
+      213: -2506109964539691282
+    second: CreditsStuff_6
+  - first:
+      213: -1111298183026751445
+    second: CreditsStuff_7
+  - first:
+      213: 66538373790881426
+    second: CreditsStuff_8
+  - first:
+      213: 1233335323537964642
+    second: CreditsStuff_9
+  - first:
+      213: 1473106823597307946
+    second: CreditsStuff_10
+  - first:
+      213: 3215590559675591301
+    second: CreditsStuff_11
+  - first:
+      213: 380668685371924353
+    second: CreditsStuff_12
+  - first:
+      213: 5471235621660744031
+    second: CreditsStuff_13
+  - first:
+      213: 8157942135445040465
+    second: CreditsStuff_14
+  - first:
+      213: -8276503650661866214
+    second: CreditsStuff_15
+  - first:
+      213: -40748914685487659
+    second: CreditsStuff_16
+  - first:
+      213: -456318417595070585
+    second: CreditsStuff_17
+  - first:
+      213: 6477122240861106093
+    second: CreditsStuff_18
+  - first:
+      213: -5780984052055731185
+    second: CreditsStuff_19
+  - first:
+      213: -1529869099877086704
+    second: CreditsStuff_20
+  - first:
+      213: -6746869046772389408
+    second: CreditsStuff_21
+  - first:
+      213: -1608817677102365199
+    second: CreditsStuff_22
+  - first:
+      213: 5795530785695870285
+    second: CreditsStuff_23
+  - first:
+      213: 987804095930900809
+    second: CreditsStuff_24
+  - first:
+      213: -8786359054173775365
+    second: CreditsStuff_25
+  - first:
+      213: 6872883119228865364
+    second: CreditsStuff_26
+  - first:
+      213: -4316076006555899089
+    second: CreditsStuff_27
+  - first:
+      213: 1545021943890489954
+    second: CreditsStuff_28
+  - first:
+      213: -1012528476521263228
+    second: CreditsStuff_29
+  - first:
+      213: 383320413325492340
+    second: CreditsStuff_30
+  - first:
+      213: -2502342773284775007
+    second: CreditsStuff_31
+  - first:
+      213: -8535404100084666251
+    second: CreditsStuff_32
+  - first:
+      213: 2349374569148942063
+    second: CreditsStuff_33
+  - first:
+      213: 4435578448233878591
+    second: CreditsStuff_34
+  - first:
+      213: -5755296535196851475
+    second: CreditsStuff_35
+  - first:
+      213: 8264994313818484312
+    second: CreditsStuff_36
+  - first:
+      213: 967481485264751737
+    second: CreditsStuff_37
+  - first:
+      213: -8581810581509209531
+    second: CreditsStuff_38
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CreditsStuff_0
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 188
+        width: 266
+        height: 15
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f222630e8cc6e0ca0800000000000000
+      internalID: -6048777639501094353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CreditsStuff_1
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 110
+        width: 35
+        height: 11
+      alignment: 9
+      pivot: {x: 0.4857143, y: 0.54545456}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf6b4682759708210800000000000000
+      internalID: 1333198904948471548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CreditsStuff_2
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 108
+        width: 50
+        height: 13
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4615385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a89045df3072dbab0800000000000000
+      internalID: -4990789913968113270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CreditsStuff_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 110
+        width: 26
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35fa003b4ff4a7260800000000000000
+      internalID: 7096072075269418835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CreditsStuff_4
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 110
+        width: 32
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1de4619dbee33a930800000000000000
+      internalID: 4153232464046083793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CreditsStuff_5
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 110
+        width: 39
+        height: 10
+      alignment: 9
+      pivot: {x: 0.4871795, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e6f806eff0a434f0800000000000000
+      internalID: -849877408729729310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2e89e811756a6574a9cd53178c123538
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      CreditsStuff_0: -6048777639501094353
+      CreditsStuff_1: 1333198904948471548
+      CreditsStuff_10: 1473106823597307946
+      CreditsStuff_11: 3215590559675591301
+      CreditsStuff_12: 380668685371924353
+      CreditsStuff_13: 5471235621660744031
+      CreditsStuff_14: 8157942135445040465
+      CreditsStuff_15: -8276503650661866214
+      CreditsStuff_16: -40748914685487659
+      CreditsStuff_17: -456318417595070585
+      CreditsStuff_18: 6477122240861106093
+      CreditsStuff_19: -5780984052055731185
+      CreditsStuff_2: -4990789913968113270
+      CreditsStuff_20: -1529869099877086704
+      CreditsStuff_21: -6746869046772389408
+      CreditsStuff_22: -1608817677102365199
+      CreditsStuff_23: 5795530785695870285
+      CreditsStuff_24: 987804095930900809
+      CreditsStuff_25: -8786359054173775365
+      CreditsStuff_26: 6872883119228865364
+      CreditsStuff_27: -4316076006555899089
+      CreditsStuff_28: 1545021943890489954
+      CreditsStuff_29: -1012528476521263228
+      CreditsStuff_3: 7096072075269418835
+      CreditsStuff_30: 383320413325492340
+      CreditsStuff_31: -2502342773284775007
+      CreditsStuff_32: -8535404100084666251
+      CreditsStuff_33: 2349374569148942063
+      CreditsStuff_34: 4435578448233878591
+      CreditsStuff_35: -5755296535196851475
+      CreditsStuff_36: 8264994313818484312
+      CreditsStuff_37: 967481485264751737
+      CreditsStuff_38: -8581810581509209531
+      CreditsStuff_4: 4153232464046083793
+      CreditsStuff_5: -849877408729729310
+      CreditsStuff_6: -2506109964539691282
+      CreditsStuff_7: -1111298183026751445
+      CreditsStuff_8: 66538373790881426
+      CreditsStuff_9: 1233335323537964642
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
