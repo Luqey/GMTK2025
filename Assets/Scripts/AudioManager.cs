@@ -36,16 +36,23 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1 && bgmAudioSource.clip != BGM[1] && bgmAudioSource.clip != BGM[2])
+        if (SceneManager.GetActiveScene().buildIndex == 1 && bgmAudioSource.clip != BGM[1] && bgmAudioSource.clip != BGM[2] && !DataManager.instance.gameOver)
         {
-            playBGM(1,false);
-        } else if (bgmAudioSource.clip == BGM[1] && !bgmAudioSource.isPlaying)
+            playBGM(1, false);
+        }
+        else if (bgmAudioSource.clip == BGM[1] && !bgmAudioSource.isPlaying)
         {
             playBGM(2, true);
             bgmSubAudioSource.Play();
-        } else if (SceneManager.GetActiveScene().buildIndex == 0 && bgmAudioSource.clip != BGM[0])
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 0 && bgmAudioSource.clip != BGM[0])
         {
-            playBGM(1,true);
+            playBGM(0, true);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 1 && DataManager.instance.gameOver && bgmAudioSource.clip != BGM[3])
+        {
+            bgmSubAudioSource.Stop();
+            playBGM(3, false);
         }
         if (SceneManager.GetActiveScene().buildIndex == 1 && bgmAudioSource.clip == BGM[2] && isUnderground)
         {

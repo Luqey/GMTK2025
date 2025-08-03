@@ -49,8 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BGM:
   - {fileID: 8300000, guid: 7b7ca18a7d9d10344b434848d0327ce0, type: 3}
-  - {fileID: 8300000, guid: 1dd6a069fd1b80a4b82127b2cda0df5d, type: 3}
-  - {fileID: 8300000, guid: 5896e1aa779fda747bcab89a77a87e72, type: 3}
+  - {fileID: 8300000, guid: a1ae24ea2c6282848a54faa3e8fbe3e0, type: 3}
+  - {fileID: 8300000, guid: a2fa415fdc7ec9f408cce3e65fbcda52, type: 3}
+  - {fileID: 8300000, guid: 56114fd2376ef4b4f9a7249c6e8a95ff, type: 3}
   menuClickSFX:
   - {fileID: 8300000, guid: d6d6eda88b9f1224788530745279eb74, type: 3}
   - {fileID: 8300000, guid: 4a45745644425ea4794973558029597a, type: 3}
