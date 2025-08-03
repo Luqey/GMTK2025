@@ -13,8 +13,8 @@ public class AugmentSelectionManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        possibleAugments = new List<Augment>() { new Augment(0, 0, 100, "Speed I"), new Augment(1, 1, 50, "Speed II"), new Augment(2, 2, 20, "Speed III"), new Augment(3, 1, 30, "Spring Shoes"), new Augment(4, 2, 5, "Athletic"), new Augment(5, 0, 50, "Dash"), new Augment(6, 1, 20, "+1 Jump"), new Augment(11, 1, 20, "Light") };
-        possibleNegatives = new List<Augment>() { new Augment(7, -1, 30, "Inversion"), new Augment(8, -1, 10, "WARP!"), new Augment(9, -1, 40, "Speed Down"), new Augment(10, -1, 20, "Heavy") };
+        possibleAugments = new List<Augment>() { new Augment(0, 0, 100, "Speed I"), new Augment(1, 1, 50, "Speed II"), new Augment(2, 2, 20, "Speed III"), new Augment(3, 1, 30, "Spring Shoes"), new Augment(4, 2, 5, "Athletic"), new Augment(5, 0, 50, "Dash"), new Augment(6, 1, 20, "+1 Jump"), new Augment(11, 1, 20, "Light"), new Augment(12, 2, 2, "Ultra Speed"), new Augment(13, 0, 80, "Short Burst"), new Augment(14, 2, 5, "Zero Gravity"), new Augment(18, 2, 8, "Stoneskin") };
+        possibleNegatives = new List<Augment>() { new Augment(7, -1, 30, "Inversion"), new Augment(8, -1, 3, "WARP!"), new Augment(9, -1, 40, "Speed Down"), new Augment(10, -1, 20, "Heavy"), new Augment(15, -1, 10, "Empty!"), new Augment(16, -1, 40, "Slippery"), new Augment(17, -1, 40, "Rough Skin"), };
         StartCoroutine(waitToRegen());
     }
 
