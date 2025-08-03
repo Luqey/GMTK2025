@@ -6,7 +6,6 @@ public class Timer : MonoBehaviour
 {
     private float time = 0f; //Time elapsed
     public float recordTime = 0f; //Fastest time that run
-    public float previousTime = 0f; //Previous time score
     private bool isActive = false; //Boolean for whether the timer is active.
     private bool isRewinding = false;
     private LoopBuffMechanic loop;
@@ -15,7 +14,6 @@ public class Timer : MonoBehaviour
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text countdownText;
     public TMP_Text recordTimeText;
-    public TMP_Text previousTimeText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,10 +30,11 @@ public class Timer : MonoBehaviour
         if (isActive)
         {
             time += Time.deltaTime;
+            if (time >= recordTime && recordTime != 0) StartCoroutine(failPause());
         }
         if (isRewinding)
         {
-            time -= Time.deltaTime * 2.5f;
+            time -= Time.deltaTime * 5f;
         }
         timerText.text = updateTime(time);
     }
@@ -74,9 +73,6 @@ public class Timer : MonoBehaviour
         {
             lives.changeLives(-1);
         }
-        previousTime = time;
-        previousTimeText.text = updateTime(previousTime);
-        loop.setDuration(previousTime);
     }
 
     //Returns a string for updating the timer text
@@ -104,5 +100,17 @@ public class Timer : MonoBehaviour
         isActive = true;
         yield return new WaitForSeconds(0.5f);
         countdownText.gameObject.SetActive(false);
+    }
+    private IEnumerator failPause()
+    {
+        lives.changeLives(-1);
+        isActive = false;
+        player.OnDisable();
+        player.gameObject.GetComponent<Rigidbody2D>().Sleep();
+        DataManager.instance.failed = true;
+        //Pause vfx
+        yield return new WaitForSeconds(2f);
+        //Remove Pause
+        DataManager.instance.startRewind();
     }
 }

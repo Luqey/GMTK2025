@@ -167,7 +167,6 @@ public class PlayerScript : MonoBehaviour
                 }
                 else
                 {
-                    //myAnim.Play("Slide");
                     xSpeed += accelRate * slideDecelerationRate * (xSpeed > 0 ? -1 : 1);
                 }
             }
@@ -280,7 +279,6 @@ public class PlayerScript : MonoBehaviour
                 }
                 else
                 {
-                    //myAnim.Play("Slide");
                     xSpeed += accelRate * slideDecelerationRate * (xSpeed > 0 ? -1 : 1);
                 }
             }
@@ -319,26 +317,17 @@ public class PlayerScript : MonoBehaviour
         }
         else
         {
-            if (rewindRecording != null && counter / 2 < rewindCount - 1)
+            if (rewindRecording != null && counter < rewindCount - 1)
             {
-                if (counter % 2 == 0)
-                {
-                    rewindPoint = rewindRecording.Pop();
-                    transform.position = rewindPoint.position;
-                    transform.eulerAngles = rewindPoint.eulerAngles;
-                    transform.localScale = rewindPoint.scale;
-                    sprenderer.sprite = rewindPoint.sprite;
-                    sprenderer.flipX = !rewindPoint.facingRight;
-                }
-                else
-                {
-                    transform.position = rewindPoint.position + (rewindRecording.Peek().position - rewindPoint.position) * ((counter % 5) / 5.0f);
-                    transform.eulerAngles = rewindPoint.eulerAngles + (rewindRecording.Peek().eulerAngles - rewindPoint.eulerAngles) * ((counter % 5) / 5.0f);
-                    transform.localScale = rewindPoint.scale + (rewindRecording.Peek().scale - rewindPoint.scale) * ((counter % 5) / 5.0f);
-                }
+                rewindPoint = rewindRecording.Pop();
+                transform.position = rewindPoint.position;
+                transform.eulerAngles = rewindPoint.eulerAngles;
+                transform.localScale = rewindPoint.scale;
+                sprenderer.sprite = rewindPoint.sprite;
+                sprenderer.flipX = !rewindPoint.facingRight;
             }
             counter++;
-            if (counter / 2 >= rewindCount - 1)
+            if (counter >= rewindCount - 1)
             {
                 DataManager.instance.resetLevel();
             }

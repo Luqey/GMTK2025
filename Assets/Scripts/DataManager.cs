@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,9 +11,11 @@ public class DataManager : MonoBehaviour
     [SerializeField] private RectTransform pauseScreen;
     [SerializeField] private GameObject endScreen;
     [SerializeField] private GameObject countdownTimer;
+    [SerializeField] private TMP_Text rewindText;
     public Vector2 pauseScreenAnchorPos;
     public Vector2 initialPlayerPosition;
     public LoopBuffMechanic lbm;
+    public bool failed = false;
     public bool isPaused = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -39,7 +42,7 @@ public class DataManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!endScreen.activeSelf && !countdownTimer.activeSelf)
+        if (!endScreen.activeSelf && !countdownTimer.activeSelf && !failed)
         {
             if (Input.GetKeyDown(KeyCode.Escape)) isPaused = !isPaused;
             if (isPaused)
@@ -76,6 +79,7 @@ public class DataManager : MonoBehaviour
     {
         player.GetComponent<PlayerScript>().startRewind();
         timer.startRewind();
+        StartCoroutine(initiateRewindText());
     }
     public void resetLevel()
     {
@@ -96,10 +100,9 @@ public class DataManager : MonoBehaviour
             else
                 adt.negativeids.Add(lbm.negatives[i].idNumber);
         }
-        adt.lastGhost = player.GetComponent<PlayerScript>().ghostRecording;
+        if (!failed) adt.lastGhost = player.GetComponent<PlayerScript>().ghostRecording;
         adt.recordTime = timer.recordTime;
-        adt.previousTime = timer.previousTime;
-        Debug.Log(timer.previousTime);
+        //Debug.Log(timer.previousTime);
         adt.lives = timer.lives.getLives();
         SceneManager.LoadScene(2);
     }
@@ -107,6 +110,32 @@ public class DataManager : MonoBehaviour
     public void unPause()
     {
         isPaused = false;
+    }
+
+    public System.Collections.IEnumerator initiateRewindText()
+    {
+        rewindText.gameObject.SetActive(true);
+        int i = 0;
+        while (true)
+        {
+            switch (i % 4)
+            {
+                case 0:
+                    rewindText.text = "Rewinding";
+                    break;
+                case 1:
+                    rewindText.text = "Rewinding.";
+                    break;
+                case 2:
+                    rewindText.text = "Rewinding..";
+                    break;
+                case 3:
+                    rewindText.text = "Rewinding...";
+                    break;
+            }
+            i++;
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     public void quitToMainMenu()

@@ -9,7 +9,7 @@ public class AugmentDataTransfer : MonoBehaviour
     public List<int> negativeids;
     public List<ghostPoint> lastGhost;
     public float recordTime;
-    public float previousTime;
+    //public float previousTime;
     public bool overrideSceneBuffs;
     public int lives;
     void Awake()
@@ -49,14 +49,14 @@ public class AugmentDataTransfer : MonoBehaviour
             lbm.setBuffList(ids, rarityDisps, negativeids);
             lbm.player.ghost.GetComponent<GhostScript>().points = lastGhost;
             lbm.player.ghost.GetComponent<GhostScript>().counter = 0;
-            lbm.timer.previousTime = previousTime;
-            lbm.timer.previousTimeText.text = lbm.timer.updateTime(previousTime);
+            //lbm.timer.previousTime = previousTime;
+            //lbm.timer.previousTimeText.text = lbm.timer.updateTime(previousTime);
             lbm.timer.recordTime = recordTime;
             lbm.timer.recordTimeText.text = lbm.timer.updateTime(recordTime);
             lbm.timer.lives.setLives(lives);
-            lbm.setDuration(previousTime);
+            lbm.setDuration(recordTime);
             overrideSceneBuffs = false;
-            Debug.Log(previousTime);
+            //Debug.Log(previousTime);
         }
     }
 }

@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UndergroundCheck : MonoBehaviour
@@ -10,7 +8,7 @@ public class UndergroundCheck : MonoBehaviour
 
     [SerializeField] float transitionSpeed;
     private float upperOffset;
-    private bool isTransitioning = false;
+    //private bool isTransitioning = false;
 
     private Coroutine currentCoroutine;
 
