@@ -103,7 +103,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchPower: 20
-  springSfx: []
+  springSfx:
+  - {fileID: 8300000, guid: ceb3d7b4501eb6843b42a4028a5cc2c0, type: 3}
+  - {fileID: 8300000, guid: ef8d4273e1724bf4fbbf11c7cc3a4d94, type: 3}
+  - {fileID: 8300000, guid: ad5fdb25eef830b4bb90d807c62193ae, type: 3}
+  - {fileID: 8300000, guid: 95a9185fff4490943b233ec4489b7749, type: 3}
+  - {fileID: 8300000, guid: c25bf01ad1fdff74abe1cc9d63bb57b1, type: 3}
+  - {fileID: 8300000, guid: 3abc06f7cb6a5854887a7c010bb87166, type: 3}
 --- !u!61 &3209380098084900438
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -163,7 +169,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
