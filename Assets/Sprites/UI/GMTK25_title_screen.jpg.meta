@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GMTK25_title_screen_0: 7728289096741142408
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
