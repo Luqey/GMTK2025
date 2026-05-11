@@ -500,6 +500,122 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5900893896772978579, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5900893896772978579, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 55ceed09a63579043a6cb5ac79b8fefd, type: 3}
+    - target: {fileID: 5900893896772978579, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 55ceed09a63579043a6cb5ac79b8fefd, type: 3}
+    - target: {fileID: 6194886568539186543, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194886568539186543, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194886568539186543, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 4ee66949e56f9dd48a8bcd88c68510e6, type: 3}
+    - target: {fileID: 6194886568539186543, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4ee66949e56f9dd48a8bcd88c68510e6, type: 3}
+    - target: {fileID: 6649295300464296516, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6649295300464296516, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: e78c091a68440084a8e0c49405b7e63e, type: 3}
+    - target: {fileID: 6649295300464296516, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e78c091a68440084a8e0c49405b7e63e, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: sfxVolume
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: isUnderground
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'BGM.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ac984898f72149e49a7bd5f3f21a1ea9, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'BGM.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 4dbc4362fab68864ab52cd90c03e5cec, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'BGM.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 689496299062d6f418398ed04e06bb66, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'BGM.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7b47fd896875db8478fb3f6e8c4f3710, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: menuClickSFX.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: augmentNegSFX.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'menuClickSFX.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 80bacd59ecc9794459ecc5c50a4d5a76, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'menuClickSFX.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: dca01fb5d5210b246addfc9e29c406e8, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'menuClickSFX.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: b8ea2dccad444064783266c5e6fd0686, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'augmentNegSFX.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e9f0dc858b5caf42a68cfe496540125, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'augmentNegSFX.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d2697f3560d93e4cb89b4d2da8dcffe, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'augmentNegSFX.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: eaf128ad22b805e43b3d48a3916ab699, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'augmentNegSFX.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 73968b72ee2688e4cac277585ad39023, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'augmentPosSFX.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: b71f653e8dd22894c868105865bc460e, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'augmentPosSFX.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 83605250f8e62024a832534fd9fe3581, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'augmentPosSFX.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a943354833c1b85408bcab557d2ca0ef, type: 3}
+    - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
+      propertyPath: 'augmentPosSFX.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 30082ca808e8e324584be21cdbbc4fc6, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
