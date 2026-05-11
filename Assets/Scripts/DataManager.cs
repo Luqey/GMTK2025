@@ -21,6 +21,7 @@ public class DataManager : MonoBehaviour
     public bool failed = false;
     public bool gameOver;
     public bool isPaused = false;
+    private GameObject canvas;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -40,12 +41,14 @@ public class DataManager : MonoBehaviour
         initialPlayerPosition = player.transform.position;
         timer = FindFirstObjectByType<Timer>();
         pauseScreenAnchorPos = pauseScreen.position;
-        pauseScreen.position += new Vector3(0, 1000f, 0);
+        //pauseScreen.position += new Vector3(0, 32.75f, 0);
+        canvas = pauseScreen.parent.gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
+        pauseScreenAnchorPos = new Vector2(canvas.transform.position.x,canvas.transform.position.y+0.9375f);
         if (!endScreen.activeSelf && !rewindText.gameObject.activeSelf && !countdownTimer.activeSelf && !failed)
         {
             if (Input.GetKeyDown(KeyCode.Escape)) isPaused = !isPaused;
@@ -56,8 +59,8 @@ public class DataManager : MonoBehaviour
                 if (timer.isTimerActive()) timer.toggleTimer();
                 if ((Vector2)pauseScreen.position != pauseScreenAnchorPos)
                 {
-                    pauseScreen.position = Vector2.MoveTowards(pauseScreen.position, pauseScreenAnchorPos, 10f);
-                    if (Vector2.Distance(pauseScreen.position, pauseScreenAnchorPos) <= 10f)
+                    pauseScreen.position = Vector2.MoveTowards(pauseScreen.position, pauseScreenAnchorPos, 1f);
+                    if (Vector2.Distance(pauseScreen.position, pauseScreenAnchorPos) <= 1f)
                         pauseScreen.position = pauseScreenAnchorPos;
                 }
             }
@@ -66,21 +69,21 @@ public class DataManager : MonoBehaviour
                 if (!timer.isTimerActive()) timer.toggleTimer();
                 player.GetComponent<PlayerScript>().OnEnable();
                 player.GetComponent<Rigidbody2D>().WakeUp();
-                if ((Vector2)pauseScreen.position != pauseScreenAnchorPos + new Vector2(0, 1000f))
+                if ((Vector2)pauseScreen.position != pauseScreenAnchorPos + new Vector2(0, 32.75f))
                 {
-                    pauseScreen.position = Vector2.MoveTowards(pauseScreen.position, pauseScreenAnchorPos + new Vector2(0, 1000f), 10f);
-                    if (Vector2.Distance(pauseScreen.position, pauseScreenAnchorPos + new Vector2(0, 1000f)) <= 10f)
-                        pauseScreen.position = pauseScreenAnchorPos + new Vector2(0, 1000f);
+                    pauseScreen.position = Vector2.MoveTowards(pauseScreen.position, pauseScreenAnchorPos + new Vector2(0, 32.75f), 1f);
+                    if (Vector2.Distance(pauseScreen.position, pauseScreenAnchorPos + new Vector2(0, 32.75f)) <= 1f)
+                        pauseScreen.position = pauseScreenAnchorPos + new Vector2(0, 32.75f);
                 }
             }
         }
         if (gameOver)
         {
-            if ((Vector2)gameOverScreen.position != pauseScreenAnchorPos)
+            if ((Vector2)gameOverScreen.position != (Vector2)canvas.transform.position)
             {
-                gameOverScreen.position = Vector2.MoveTowards(gameOverScreen.position, pauseScreenAnchorPos, 10f);
-                if (Vector2.Distance(gameOverScreen.position, pauseScreenAnchorPos) <= 10f)
-                   gameOverScreen.position = pauseScreenAnchorPos;
+                gameOverScreen.position = Vector2.MoveTowards(gameOverScreen.position, canvas.transform.position, 1f);
+                if (Vector2.Distance(gameOverScreen.position, pauseScreenAnchorPos) <= 1f)
+                   gameOverScreen.position = canvas.transform.position;
             }
         }
     }
