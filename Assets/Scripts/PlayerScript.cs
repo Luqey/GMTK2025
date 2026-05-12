@@ -168,7 +168,7 @@ public class PlayerScript : MonoBehaviour
             }
             if (isCrouched)
             {
-                cannotStand = Physics2D.BoxCast(new Vector2(transform.position.x, transform.position.y) + new Vector2(0, 0.5f) + GetComponent<Collider2D>().offset, new Vector2(0.85f, 1), 0, Vector2.down, 0.1f, groundMask);
+                cannotStand = Physics2D.BoxCast(new Vector2(transform.position.x, transform.position.y) + new Vector2(0, -0.05f), new Vector2(0.85f, 1f), 0, Vector2.down, 0.1f, groundMask);
                 myAnim.SetBool("isSliding", true);
                 gameObject.GetComponent<CapsuleCollider2D>().size = new Vector2(1.8f, 0.9f);
                 gameObject.GetComponent<CapsuleCollider2D>().direction = CapsuleDirection2D.Horizontal;

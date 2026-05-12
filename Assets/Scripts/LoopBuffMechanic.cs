@@ -16,6 +16,9 @@ public class LoopBuffMechanic : MonoBehaviour
     [SerializeField] public List<BuffType> negatives = new List<BuffType>(); //List of different types of negative buffs
     [SerializeField] private TMP_Text intervalText;
     [SerializeField] private Sprite[] augmentSprites;
+    
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] positiveAugmentSounds;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -48,7 +51,7 @@ public class LoopBuffMechanic : MonoBehaviour
             }
             else
             {
-                 intervalText.text = "Time Until Next:\n" + (int)(intervals * (buffId + 1) - time)  + " sec";
+                intervalText.text = "Time Until Next:\n" + (int)(intervals * (buffId + 1) - time)  + " sec";
                 if (time >= (intervals * (buffId + 1)) && buffId != numBuffs)
                 {
                     activateBuff(buffId);
@@ -60,12 +63,27 @@ public class LoopBuffMechanic : MonoBehaviour
 
     void activateBuff(int id)
     {
-        if (id == 3)
+        if (id == 2)
         {
             if (buffs[id] != null) buffs[id].applyBuff(player, intervals * 2, augmentSprites);
             if (negatives[id] != null) negatives[id].applyBuff(player, intervals * 2,augmentSprites);
         }
-        if (buffs[id] != null) buffs[id].applyBuff(player, intervals,augmentSprites);
+        if (buffs[id].idNumber != -1)
+        {
+            buffs[id].applyBuff(player, intervals,augmentSprites);
+            if(id < 2)
+            {
+                audioSource.PlayOneShot(positiveAugmentSounds[0]);
+            }
+            else if(id < 4)
+            {
+                audioSource.PlayOneShot(positiveAugmentSounds[1]);
+            }
+            else
+            {
+                audioSource.PlayOneShot(positiveAugmentSounds[2]);
+            }
+        }
         if (negatives[id] != null) negatives[id].applyBuff(player, intervals,augmentSprites);
     }
     //adds an augment from the list to the ones in play
