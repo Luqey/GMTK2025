@@ -551,7 +551,7 @@ PrefabInstance:
     - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
       propertyPath: 'BGM.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: ac984898f72149e49a7bd5f3f21a1ea9, type: 3}
+      objectReference: {fileID: 8300000, guid: cb7202760db984f4eaf1782ae71b0a53, type: 3}
     - target: {fileID: 7089914805936041891, guid: 507a414f76520bd46b92b78fa5f2e247, type: 3}
       propertyPath: 'BGM.Array.data[1]'
       value: 
