@@ -20,6 +20,7 @@ public class BoostPad : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            playSfx();
             collision.gameObject.GetComponent<PlayerScript>().setDash(true);
         }
     }

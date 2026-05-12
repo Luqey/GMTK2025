@@ -39,11 +39,12 @@ public class AudioManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 1 && bgmAudioSource.clip != BGM[1] && bgmAudioSource.clip != BGM[2] && !DataManager.instance.gameOver)
         {
             playBGM(1, false);
+            playSubBGM(4,false);
         }
         else if (bgmAudioSource.clip == BGM[1] && !bgmAudioSource.isPlaying)
         {
             playBGM(2, true);
-            bgmSubAudioSource.Play();
+            playSubBGM(5,true);
         }
         else if (SceneManager.GetActiveScene().buildIndex == 0 && bgmAudioSource.clip != BGM[0])
         {
@@ -54,7 +55,7 @@ public class AudioManager : MonoBehaviour
             bgmSubAudioSource.Stop();
             playBGM(3, false);
         }
-        if (SceneManager.GetActiveScene().buildIndex == 1 && bgmAudioSource.clip == BGM[2] && isUnderground)
+        if (SceneManager.GetActiveScene().buildIndex == 1 && isUnderground)
         {
             bgmAudioSource.mute = true;
             bgmSubAudioSource.mute = false;
@@ -73,6 +74,12 @@ public class AudioManager : MonoBehaviour
         bgmAudioSource.clip = BGM[id];
         bgmAudioSource.loop = loop;
         bgmAudioSource.Play();
+    }
+    public void playSubBGM(int id, bool loop)
+    {
+        bgmSubAudioSource.clip = BGM[id];
+        bgmSubAudioSource.loop = loop;
+        bgmSubAudioSource.Play();
     }
     public void playMenuClick()
     {
