@@ -147,12 +147,22 @@ public class PlayerScript : MonoBehaviour
             switch ((int)(move.ReadValue<Vector2>().y * 1.5f))
             {
                 case 1:
+                    if(invert && !isCrouched)
+                    {
+                        xSpeed = xSpeed * 1.4f;
+                        xSpeed = Mathf.Clamp(xSpeed, -maxSpeed * 1.5f * speedMult, maxSpeed * 1.5f * speedMult);
+                    }
                     isCrouched = invert;
                     break;
                 case 0:
                     isCrouched = false;
                     break;
                 case -1:
+                    if(!invert && !isCrouched)
+                    {
+                        xSpeed = xSpeed * 1.4f;
+                        xSpeed = Mathf.Clamp(xSpeed, -maxSpeed * 1.5f * speedMult, maxSpeed * 1.5f * speedMult);
+                    }
                     isCrouched = !invert;
                     break;
             }
@@ -163,13 +173,13 @@ public class PlayerScript : MonoBehaviour
                 gameObject.GetComponent<CapsuleCollider2D>().size = new Vector2(1.8f, 0.9f);
                 gameObject.GetComponent<CapsuleCollider2D>().direction = CapsuleDirection2D.Horizontal;
                 gameObject.GetComponent<CapsuleCollider2D>().offset = new Vector2(0, -1.1f);
-                if (Mathf.Abs(xSpeed) < accelRate * 0.01f)
+                if (Mathf.Abs(xSpeed) < accelRate * slideDecelerationRate * 4)
                 {
                     xSpeed = 0;
                 }
                 else
                 {
-                    xSpeed += accelRate * slideDecelerationRate * (xSpeed > 0 ? -1 : 1);
+                    xSpeed += accelRate * slideDecelerationRate * (xSpeed > 0 ? -1 : 1) * (Mathf.Abs(xSpeed) < accelRate * slideDecelerationRate * (0.5f / Time.fixedDeltaTime) ? 2 : 1) * (Mathf.Abs(xSpeed) < accelRate * slideDecelerationRate * (1.5f / Time.fixedDeltaTime) ? 2 : 1);
                 }
             }
             else if (!cannotStand)
@@ -284,10 +294,10 @@ public class PlayerScript : MonoBehaviour
                     xSpeed += accelRate * slideDecelerationRate * (xSpeed > 0 ? -1 : 1);
                 }
             }
-            //If the player cannot stand and their velocity is 0, move them until they can stand
-            if (cannotStand && xSpeed == 0)
+            //If the player cannot stand and their velocity is less than half of maxSpeed, move them until they can stand
+            if (cannotStand && Mathf.Abs(xSpeed) < maxSpeed * speedMult)
             {
-                xSpeed = 2f * (sprenderer.flipX ? -1 : 1);
+                xSpeed = maxSpeed * speedMult * (sprenderer.flipX ? -1 : 1);
             }
             if (Math.Abs(rigid.linearVelocityY) < 0.01f) rigid.linearVelocityY = 0;
             if (rigid.linearVelocityY < 0)
